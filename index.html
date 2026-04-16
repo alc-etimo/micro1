@@ -206,26 +206,43 @@
     }
 
     .data-bg {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-image: url('img.png');
-      background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.15;
-      z-index: 0;
-    }
+    background-position: center;
+    background-size: 350px; 
+    background-color: black;
+    filter: grayscale(100%) opacity(0); /* Começa invisível */
+    transition: opacity 0.8s ease; /* Transição suave */
+    z-index: -1;
+    pointer-events: none;
+}
+    .bg-img.visible {
+    opacity: 0.25;
+}
 
     .data-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 800px;
-      min-height: 200px;
-    }
+      position: fixed;
+      top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffffffcc;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 2;
+}
 
     .data-quote {
       font-family: 'Outfit', sans-serif;
@@ -920,66 +937,52 @@
     const desktopNav = document.getElementById('desktopNav');
 
     window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      
-      // Compact navbar visibility
-      if (currentScroll > 100) {
-        compactNav.classList.add('visible');
-        desktopNav.classList.add('hide');
-      } else {
-        compactNav.classList.remove('visible');
-        desktopNav.classList.remove('hide');
-      }
-    });
-
-    // Scroll-triggered text swap in data section (SIMPLIFICADO)
-    const quote1 = document.getElementById('quote1');
-    const quote2 = document.getElementById('quote2');
-    const dataSection = document.querySelector('.data-section');
-    let quote1Active = true;
-    let ticking = false;
-
-    function updateQuotesBasedOnScroll() {
-      if (!dataSection) return;
-      
-      const sectionTop = dataSection.offsetTop;
-      const sectionHeight = dataSection.clientHeight;
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      
-      // Calcula o progresso dentro da seção
-      let progress = (scrollPosition - sectionTop) / (sectionHeight - viewportHeight);
-      progress = Math.max(0, Math.min(1, progress));
-      
-      const swapThreshold = 0.3;
-      
-      if (progress >= swapThreshold && quote1Active) {
-        quote1.classList.remove('visible');
-        quote1.classList.add('hidden');
-        quote2.classList.remove('hidden');
-        quote2.classList.add('visible');
-        quote1Active = false;
-      } else if (progress < swapThreshold && !quote1Active) {
-        quote2.classList.remove('visible');
-        quote2.classList.add('hidden');
-        quote1.classList.remove('hidden');
-        quote1.classList.add('visible');
-        quote1Active = true;
-      }
+    // 1. Controle da Navbar de Scroll (já existente no seu código)
+    const scrollNav = document.getElementById('scrollNav');
+    if (window.scrollY > 300) {
+        scrollNav.classList.add('active');
+    } else {
+        scrollNav.classList.remove('active');
     }
 
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          updateQuotesBasedOnScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
+    // 2. Lógica do Bug: Imagem Fixa e Troca de Frases por Progresso
+    const aboutSection = document.getElementById('about');
+    const staticImg = document.getElementById('staticImg');
+    const phrases = document.querySelectorAll('.phrase');
+    
+    const sectionRect = aboutSection.getBoundingClientRect();
+    const sectionHeight = aboutSection.offsetHeight;
+    const viewHeight = window.innerHeight;
 
-    window.addEventListener('scroll', onScroll);
-    updateQuotesBasedOnScroll(); // Chamada inicial
+    // Verifica se estamos dentro da seção About
+    if (sectionRect.top < viewHeight && sectionRect.bottom > 0) {
+        staticImg.classList.add('visible'); // Mostra a imagem fixa
+
+        // Calcula quanto da seção já foi rolada (de 0 a 1)
+        const scrollProgress = (viewHeight - sectionRect.top) / (sectionHeight + viewHeight);
+
+        // Lógica de "Certa Distância":
+        // Scroll entre 15% e 45% -> Mostra Frase 1
+        if (scrollProgress > 0.15 && scrollProgress < 0.45) {
+            phrases[0].style.opacity = '1';
+            phrases[1].style.opacity = '0';
+        } 
+        // Scroll entre 55% e 85% -> Mostra Frase 2
+        else if (scrollProgress > 0.55 && scrollProgress < 0.85) {
+            phrases[0].style.opacity = '0';
+            phrases[1].style.opacity = '1';
+        }
+        // Fora desses intervalos (incluindo o meio) -> Apaga ambas
+        else {
+            phrases[0].style.opacity = '0';
+            phrases[1].style.opacity = '0';
+        }
+    } else {
+        // Saiu da seção -> Esconde imagem e frases
+        staticImg.classList.remove('visible');
+        phrases.forEach(p => p.style.opacity = '0');
+    }
+});
 
     // Taxonomy animation
     const taxonomyObserver = new IntersectionObserver((entries) => {
