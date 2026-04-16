@@ -206,28 +206,24 @@
     }
 
     .data-bg {
-      position: fixed;
-      top: 0;
+            top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('img.png');
+      background-image: url('./img.png');
       background-repeat: no-repeat;
     background-position: center;
     background-size: 350px; 
     background-color: black;
-    filter: grayscale(100%) opacity(0); /* Começa invisível */
-    transition: opacity 0.8s ease; /* Transição suave */
-    z-index: -1;
-    pointer-events: none;
+    filter: grayscale(100%); /* Começa invisível */
+    
 }
     .bg-img.visible {
     opacity: 0.25;
 }
 
     .data-content {
-      position: fixed;
-      top: 50%;
+           top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
@@ -238,10 +234,7 @@
     line-height: 36px;
     color: #ffffffcc;
     text-align: center;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    z-index: 2;
+    
 }
 
     .data-quote {
@@ -253,15 +246,43 @@
       transition: opacity 0.5s ease;
     }
 
-    .data-quote.hidden {
-      opacity: 0;
-      display: none;
-    }
+    /* === STICKY SCROLL SECTION === */
 
-    .data-quote.visible {
-      opacity: 1;
-      display: block;
-    }
+.sticky-section {
+  position: relative;
+  height: 200vh; /* ESSENCIAL para scroll */
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* imagem */
+#sticky-img {
+  max-width: 60%;
+  height: auto;
+}
+
+/* textos */
+.text {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  font-size: 24px;
+  text-align: center;
+  max-width: 600px;
+}
+
+.text.active {
+  opacity: 1;
+}
 
     /* Case Studies Section */
     .cases-section {
@@ -731,18 +752,21 @@
     </div>
   </section>
 
-  <!-- Data Section with Static Background Image and Scroll-triggered Text -->
-  <section class="data-section" id="about">
-    <div class="data-bg"></div>
-    <div class="data-content">
-      <div class="data-quote visible" id="quote1">
-        Every AI model that speaks Portuguese needs more than translation: it needs cultural fluency. I turn machine outputs into human-first content.
-      </div>
-      <div class="data-quote hidden" id="quote2">
-        98% glossary adherence. 70% error reduction. 10+ style guides. 2,700-term taxonomy. Beneath every breakthrough in AI, there's human expertise — LQA, MTPE, and cultural adaptation. That's what I deliver.
-      </div>
-    </div>
-  </section>
+
+  <section class="sticky-section" id="scroll-section">
+  <div class="sticky-content">
+    <img src="./img.png" id="sticky-img" />
+
+    <p class="text text-1 active">
+        Every AI model that speaks Portuguese needs more than translation:<br> it needs cultural fluency. I turn machine outputs into human-first content.
+    </p>
+
+    <p class="text text-2">
+      98% glossary adherence. 70% error reduction. 10+ style guides. 2,700-term taxonomy. Beneath every breakthrough in AI, there's human expertise — LQA, MTPE, and cultural adaptation. That's what I deliver.
+      
+    </p>
+  </div>
+</section>
 
   <!-- Case Studies Section -->
   <section class="cases-section" id="cases">
@@ -936,52 +960,26 @@
     const compactNav = document.getElementById('compactNav');
     const desktopNav = document.getElementById('desktopNav');
 
-    window.addEventListener('scroll', () => {
-    // 1. Controle da Navbar de Scroll (já existente no seu código)
-    const scrollNav = document.getElementById('scrollNav');
-    if (window.scrollY > 300) {
-        scrollNav.classList.add('active');
-    } else {
-        scrollNav.classList.remove('active');
-    }
+  const section = document.getElementById("scroll-section");
+const text1 = document.querySelector(".text-1");
+const text2 = document.querySelector(".text-2");
 
-    // 2. Lógica do Bug: Imagem Fixa e Troca de Frases por Progresso
-    const aboutSection = document.getElementById('about');
-    const staticImg = document.getElementById('staticImg');
-    const phrases = document.querySelectorAll('.phrase');
-    
-    const sectionRect = aboutSection.getBoundingClientRect();
-    const sectionHeight = aboutSection.offsetHeight;
-    const viewHeight = window.innerHeight;
+window.addEventListener("scroll", () => {
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
 
-    // Verifica se estamos dentro da seção About
-    if (sectionRect.top < viewHeight && sectionRect.bottom > 0) {
-        staticImg.classList.add('visible'); // Mostra a imagem fixa
+  const progress = Math.min(
+    Math.max((windowHeight - rect.top) / (rect.height + windowHeight), 0),
+    1
+  );
 
-        // Calcula quanto da seção já foi rolada (de 0 a 1)
-        const scrollProgress = (viewHeight - sectionRect.top) / (sectionHeight + viewHeight);
-
-        // Lógica de "Certa Distância":
-        // Scroll entre 15% e 45% -> Mostra Frase 1
-        if (scrollProgress > 0.15 && scrollProgress < 0.45) {
-            phrases[0].style.opacity = '1';
-            phrases[1].style.opacity = '0';
-        } 
-        // Scroll entre 55% e 85% -> Mostra Frase 2
-        else if (scrollProgress > 0.55 && scrollProgress < 0.85) {
-            phrases[0].style.opacity = '0';
-            phrases[1].style.opacity = '1';
-        }
-        // Fora desses intervalos (incluindo o meio) -> Apaga ambas
-        else {
-            phrases[0].style.opacity = '0';
-            phrases[1].style.opacity = '0';
-        }
-    } else {
-        // Saiu da seção -> Esconde imagem e frases
-        staticImg.classList.remove('visible');
-        phrases.forEach(p => p.style.opacity = '0');
-    }
+  if (progress < 0.5) {
+    text1.classList.add("active");
+    text2.classList.remove("active");
+  } else {
+    text1.classList.remove("active");
+    text2.classList.add("active");
+  }
 });
 
     // Taxonomy animation
