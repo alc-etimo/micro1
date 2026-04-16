@@ -714,8 +714,8 @@
 
   <!-- Hero Section with Video -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/000000/3b82f6?text=Background+Video">
-      <source src="#" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline poster="/main/video.mp4">
+      <source src="/main/video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -728,7 +728,7 @@
     <div class="data-bg"></div>
     <div class="data-content">
       <div class="data-quote visible" id="quote1">
-        Every AI model that speaks Portuguese needs more than translation — it needs cultural fluency. I turn machine outputs into human-first content.
+        Every AI model that speaks Portuguese needs more than translation: it needs cultural fluency. I turn machine outputs into human-first content.
       </div>
       <div class="data-quote hidden" id="quote2">
         98% glossary adherence. 70% error reduction. 10+ style guides. 2,700-term taxonomy. Beneath every breakthrough in AI, there's human expertise — LQA, MTPE, and cultural adaptation. That's what I deliver.
