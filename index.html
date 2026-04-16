@@ -747,8 +747,8 @@
 
     @media (max-width: 768px) {
       .hero-title { font-size: 38px; line-height: 56px; letter-spacing: -1px; }
-       .navbar-desktop { padding: 0 1rem; top: 1rem; }
-      .nav-left { gap: 1rem; }
+     .navbar-desktop { padding: 0 1rem; top: 1rem; }
+      .nav-left { gap: 0.5rem; }
       .nav-left a { font-size: 12px; }
       .nav-center { font-size: 0.875rem; white-space: nowrap; }
       .nav-right .get-in-touch { padding: 0.35rem 0.9rem; font-size: 0.75rem; }
@@ -759,7 +759,7 @@
 </head>
 <body>
 
- <!-- Desktop Navbar: Left (about/case), Center (name), Right (get in touch) -->
+<!-- Desktop Navbar: Left (about/case), Center (name), Right (get in touch) -->
   <div class="navbar-desktop" id="desktopNav">
     <div class="nav-left">
       <a href="#about">about me</a>
@@ -777,8 +777,8 @@
   <div class="nav-compact" id="compactNav">
     <div class="nav-scroll-menu">
       <span class="compact-logo">a.</span>
-      <a href="#about">about me</a>
-      <a href="#cases">case studies</a>
+      <a href="#about">Aout me</a>
+      <a href="#cases">Case studies</a>
     </div>
   </div>
 
@@ -1003,10 +1003,22 @@
   </footer>
 
   <script>
-    // Compact Navbar on scroll + hide desktop navbar
+   // Compact Navbar on scroll + hide desktop navbar
     const compactNav = document.getElementById('compactNav');
     const desktopNav = document.getElementById('desktopNav');
-let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      // Compact navbar visibility
+      if (currentScroll > 100) {
+        compactNav.classList.add('visible');
+        desktopNav.classList.add('hide');
+      } else {
+        compactNav.classList.remove('visible');
+        desktopNav.classList.remove('hide');
+      }
+    });
 
     
 
