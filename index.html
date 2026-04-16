@@ -950,30 +950,29 @@ const quote1 = document.getElementById('quote1');
 const quote2 = document.getElementById('quote2');
 const dataSection = document.querySelector('.data-section');
 let quote1Active = true;
-let lastScrollY = window.scrollY;
 let ticking = false;
 
 function updateQuotesBasedOnScroll() {
+    if (!dataSection) return;
+    
     const sectionTop = dataSection.offsetTop;
     const sectionHeight = dataSection.clientHeight;
     const scrollPosition = window.scrollY;
+    const viewportHeight = window.innerHeight;
     
-    // Calcula o progresso dentro da seção (0 = topo da seção, 1 = fim da seção)
-    let progress = (scrollPosition - sectionTop) / (sectionHeight - window.innerHeight);
+    // Calcula o progresso dentro da seção
+    let progress = (scrollPosition - sectionTop) / (sectionHeight - viewportHeight);
     progress = Math.max(0, Math.min(1, progress));
     
-    // Define o ponto de troca em 30% da seção
     const swapThreshold = 0.3;
     
     if (progress >= swapThreshold && quote1Active) {
-        // Mostra segundo parágrafo, esconde primeiro
         quote1.classList.remove('visible');
         quote1.classList.add('hidden');
         quote2.classList.remove('hidden');
         quote2.classList.add('visible');
         quote1Active = false;
     } else if (progress < swapThreshold && !quote1Active) {
-        // Mostra primeiro parágrafo, esconde segundo
         quote2.classList.remove('visible');
         quote2.classList.add('hidden');
         quote1.classList.remove('hidden');
@@ -982,25 +981,21 @@ function updateQuotesBasedOnScroll() {
     }
 }
 
-// Observer para quando a seção entrar em viewport
-const dataObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        updateQuotesBasedOnScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
+// Função de scroll com throttle
+function onScroll() {
+    if (!ticking) {
+        requestAnimationFrame(() => {
             updateQuotesBasedOnScroll();
-        }
-    });
-}, { threshold: 0.1 });
+            ticking = false;
+        });
+        ticking = true;
+    }
+}
 
-if (dataSection) dataObserver.observe(dataSection);
+// Adiciona o listener UMA ÚNICA VEZ
+window.addEventListener('scroll', onScroll);
+// Chama uma vez para definir o estado inicial
+updateQuotesBasedOnScroll();
 
     // Taxonomy animation
     const taxonomyObserver = new IntersectionObserver((entries) => {
