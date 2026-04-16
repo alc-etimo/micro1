@@ -246,28 +246,69 @@
       transition: opacity 0.5s ease;
     }
 
-    /* === STICKY SCROLL SECTION === */
+ /* ===== STICKY EXPERIENCE SECTION ===== */
 
 .sticky-section {
   position: relative;
-  height: 200vh; /* ESSENCIAL para scroll */
+  background: #000;
+  min-height: 300vh;
+  display: flex;
+  justify-content: center;
 }
 
-.sticky-content {
+/* container central */
+.sticky-wrapper {
   position: sticky;
   top: 0;
   height: 100vh;
-
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  overflow: hidden;
 }
 
-/* imagem */
-#sticky-img {
-  max-width: 60%;
-  height: auto;
+/* TEXTO CENTRAL */
+.sticky-text {
+  position: absolute;
+  z-index: 3;
+  max-width: 900px;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.sticky-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  color: white;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+  position: absolute;
+  width: 100%;
+}
+
+.sticky-text p.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* IMAGEM FULL WIDTH */
+.sticky-image {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.sticky-image img {
+  width: 120%;
+  max-width: none;
+  opacity: 0.85;
+  filter: brightness(0.7);
 }
 
 /* textos */
@@ -753,18 +794,23 @@
   </section>
 
 
-  <section class="sticky-section" id="scroll-section">
-  <div class="sticky-content">
-    <img src="./img.png" id="sticky-img" />
+  <section class="sticky-section">
+  <div class="sticky-wrapper">
 
-    <p class="text text-1 active">
-        Every AI model that speaks Portuguese needs more than translation:<br> it needs cultural fluency. I turn machine outputs into human-first content.
-    </p>
+    <div class="sticky-text">
+      <p id="text1" class="active">
+          Every AI model that speaks Portuguese needs more than translation:<br> it needs cultural fluency. I turn machine outputs into human-first content.
+      </p>
 
-    <p class="text text-2">
-      98% glossary adherence. 70% error reduction. 10+ style guides. 2,700-term taxonomy. Beneath every breakthrough in AI, there's human expertise — LQA, MTPE, and cultural adaptation. That's what I deliver.
-      
-    </p>
+      <p id="text2">
+        98% glossary adherence. 70% error reduction. 10+ style guides. 2,700-term taxonomy. Beneath every breakthrough in AI, there's human expertise — LQA, MTPE, and cultural adaptation. That's what I deliver.
+            </p>
+    </div>
+
+    <div class="sticky-image">
+      <img src="img.png" alt="AI visualization">
+    </div>
+
   </div>
 </section>
 
@@ -960,26 +1006,25 @@
     const compactNav = document.getElementById('compactNav');
     const desktopNav = document.getElementById('desktopNav');
 
-  const section = document.getElementById("scroll-section");
-const text1 = document.querySelector(".text-1");
-const text2 = document.querySelector(".text-2");
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
 
-window.addEventListener("scroll", () => {
-  const rect = section.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
 
-  const progress = Math.min(
-    Math.max((windowHeight - rect.top) / (rect.height + windowHeight), 0),
-    1
-  );
-
-  if (progress < 0.5) {
-    text1.classList.add("active");
-    text2.classList.remove("active");
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    navbar.classList.add('hidden');
   } else {
-    text1.classList.remove("active");
-    text2.classList.add("active");
+    navbar.classList.remove('hidden');
   }
+
+  if (currentScroll > 80) {
+    navbar.classList.add('compact');
+  } else {
+    navbar.classList.remove('compact');
+  }
+
+  lastScroll = currentScroll;
 });
 
     // Taxonomy animation
