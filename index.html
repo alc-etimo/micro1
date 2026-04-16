@@ -210,7 +210,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://github.com/alc-etimo/micro1/blob/main/img.png?raw=true');
+      background-image: url('https://raw.githubusercontent.com/alc-etimo/micro1/main/img.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -714,8 +714,8 @@
 
   <!-- Hero Section with Video -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="/main/video.mp4">
-      <source src="/main/video.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline poster="video.mp4">
+      <source src="video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -944,49 +944,62 @@
       lastScroll = currentScroll;
     });
 
-    // Scroll-triggered text swap in data section
-    const quote1 = document.getElementById('quote1');
-    const quote2 = document.getElementById('quote2');
-    const dataSection = document.querySelector('.data-section');
-    let quote1Active = true;
+    // Scroll-triggered text swap in data section (fixo na seção, sem pular)
+const quote1 = document.getElementById('quote1');
+const quote2 = document.getElementById('quote2');
+const dataSection = document.querySelector('.data-section');
+let quote1Active = true;
+let lastScrollY = window.scrollY;
+let ticking = false;
 
-    const swapObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+function updateQuotesBasedOnScroll() {
+    const sectionTop = dataSection.offsetTop;
+    const sectionHeight = dataSection.clientHeight;
+    const scrollPosition = window.scrollY;
+    
+    // Calcula o progresso dentro da seção (0 = topo da seção, 1 = fim da seção)
+    let progress = (scrollPosition - sectionTop) / (sectionHeight - window.innerHeight);
+    progress = Math.max(0, Math.min(1, progress));
+    
+    // Define o ponto de troca em 30% da seção
+    const swapThreshold = 0.3;
+    
+    if (progress >= swapThreshold && quote1Active) {
+        // Mostra segundo parágrafo, esconde primeiro
+        quote1.classList.remove('visible');
+        quote1.classList.add('hidden');
+        quote2.classList.remove('hidden');
+        quote2.classList.add('visible');
+        quote1Active = false;
+    } else if (progress < swapThreshold && !quote1Active) {
+        // Mostra primeiro parágrafo, esconde segundo
+        quote2.classList.remove('visible');
+        quote2.classList.add('hidden');
+        quote1.classList.remove('hidden');
+        quote1.classList.add('visible');
+        quote1Active = true;
+    }
+}
+
+// Observer para quando a seção entrar em viewport
+const dataObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const scrollPercent = (window.scrollY - entry.target.offsetTop) / window.innerHeight;
-          
-          if (scrollPercent > 0.3 && quote1Active) {
-            // First quote exits, second enters
-            quote1.classList.remove('visible');
-            quote1.classList.add('hidden');
-            quote2.classList.remove('hidden');
-            quote2.classList.add('visible');
-            quote1Active = false;
-          } else if (scrollPercent < 0.2 && !quote1Active && window.scrollY < entry.target.offsetTop + 100) {
-            // Going back up
-            quote2.classList.remove('visible');
-            quote2.classList.add('hidden');
-            quote1.classList.remove('hidden');
-            quote1.classList.add('visible');
-            quote1Active = true;
-          }
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateQuotesBasedOnScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            updateQuotesBasedOnScroll();
         }
-      });
-    }, { threshold: [0, 0.2, 0.5] });
+    });
+}, { threshold: 0.1 });
 
-    if (dataSection) swapObserver.observe(dataSection);
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '-50px' });
-
-    reveals.forEach(el => revealObserver.observe(el));
+if (dataSection) dataObserver.observe(dataSection);
 
     // Taxonomy animation
     const taxonomyObserver = new IntersectionObserver((entries) => {
