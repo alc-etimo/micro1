@@ -44,11 +44,11 @@
       visibility: hidden;
     }
 
-    /* Left side - About & Case Studies */
+    /* Left side - About & Case Studies - VERTICAL */
     .nav-left {
       display: flex;
       flex-direction: column;
-  gap: 0.75rem;
+      gap: 0.75rem;
     }
 
     .nav-left a {
@@ -211,7 +211,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://raw.githubusercontent.com/alc-etimo/micro1/main/img.png');
+      background-image: url('https://placehold.co/1920x1080/1a1a2e/3b82f6?text=Data+Visualization');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -288,6 +288,8 @@
       overflow: hidden;
       margin-bottom: 4rem;
       transition: all 0.3s ease;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     .case-card:hover {
@@ -664,22 +666,10 @@
       color: #666;
     }
 
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     @media (max-width: 768px) {
       .hero-title { font-size: 48px; line-height: 56px; letter-spacing: -1px; }
       .navbar-desktop { padding: 0 1rem; top: 1rem; }
-      .nav-left { gap: 1rem; }
+      .nav-left { gap: 0.5rem; }
       .nav-left a { font-size: 12px; }
       .nav-center { font-size: 0.875rem; white-space: nowrap; }
       .nav-right .get-in-touch { padding: 0.35rem 0.9rem; font-size: 0.75rem; }
@@ -715,8 +705,8 @@
 
   <!-- Hero Section with Video -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="video.mp4">
-      <source src="video.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://placehold.co/1920x1080/111/3b82f6?text=Video+Placeholder" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -739,14 +729,14 @@
 
   <!-- Case Studies Section -->
   <section class="cases-section" id="cases">
-    <div class="cases-header reveal">
+    <div class="cases-header">
       <h2 class="cases-title">Case Studies</h2>
       <p class="cases-subtitle">Quality control · Localization · AI content validation · Taxonomy governance</p>
     </div>
 
     <div class="cases-container">
       <!-- Case 1: Enterprise Taxonomy -->
-      <div class="case-card reveal">
+      <div class="case-card">
         <div class="case-header">
           <div class="case-header-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
@@ -801,7 +791,7 @@
       </div>
 
       <!-- Case 2: UI String Localization -->
-      <div class="case-card reveal">
+      <div class="case-card">
         <div class="case-header">
           <div class="case-header-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
@@ -838,7 +828,7 @@
       </div>
 
       <!-- Case 3: MTPE Subtitle QA -->
-      <div class="case-card reveal">
+      <div class="case-card">
         <div class="case-header">
           <div class="case-header-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
@@ -884,7 +874,7 @@
       </div>
 
       <!-- Case 4: AI Chatbot Optimization -->
-      <div class="case-card reveal">
+      <div class="case-card">
         <div class="case-header">
           <div class="case-header-top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -928,7 +918,6 @@
     // Compact Navbar on scroll + hide desktop navbar
     const compactNav = document.getElementById('compactNav');
     const desktopNav = document.getElementById('desktopNav');
-    let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.scrollY;
@@ -941,61 +930,56 @@
         compactNav.classList.remove('visible');
         desktopNav.classList.remove('hide');
       }
-      
-      lastScroll = currentScroll;
     });
 
-    // Scroll-triggered text swap in data section (fixo na seção, sem pular)
-const quote1 = document.getElementById('quote1');
-const quote2 = document.getElementById('quote2');
-const dataSection = document.querySelector('.data-section');
-let quote1Active = true;
-let ticking = false;
+    // Scroll-triggered text swap in data section (SIMPLIFICADO)
+    const quote1 = document.getElementById('quote1');
+    const quote2 = document.getElementById('quote2');
+    const dataSection = document.querySelector('.data-section');
+    let quote1Active = true;
+    let ticking = false;
 
-function updateQuotesBasedOnScroll() {
-    if (!dataSection) return;
-    
-    const sectionTop = dataSection.offsetTop;
-    const sectionHeight = dataSection.clientHeight;
-    const scrollPosition = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    
-    // Calcula o progresso dentro da seção
-    let progress = (scrollPosition - sectionTop) / (sectionHeight - viewportHeight);
-    progress = Math.max(0, Math.min(1, progress));
-    
-    const swapThreshold = 0.3;
-    
-    if (progress >= swapThreshold && quote1Active) {
+    function updateQuotesBasedOnScroll() {
+      if (!dataSection) return;
+      
+      const sectionTop = dataSection.offsetTop;
+      const sectionHeight = dataSection.clientHeight;
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      
+      // Calcula o progresso dentro da seção
+      let progress = (scrollPosition - sectionTop) / (sectionHeight - viewportHeight);
+      progress = Math.max(0, Math.min(1, progress));
+      
+      const swapThreshold = 0.3;
+      
+      if (progress >= swapThreshold && quote1Active) {
         quote1.classList.remove('visible');
         quote1.classList.add('hidden');
         quote2.classList.remove('hidden');
         quote2.classList.add('visible');
         quote1Active = false;
-    } else if (progress < swapThreshold && !quote1Active) {
+      } else if (progress < swapThreshold && !quote1Active) {
         quote2.classList.remove('visible');
         quote2.classList.add('hidden');
         quote1.classList.remove('hidden');
         quote1.classList.add('visible');
         quote1Active = true;
+      }
     }
-}
 
-// Função de scroll com throttle
-function onScroll() {
-    if (!ticking) {
+    function onScroll() {
+      if (!ticking) {
         requestAnimationFrame(() => {
-            updateQuotesBasedOnScroll();
-            ticking = false;
+          updateQuotesBasedOnScroll();
+          ticking = false;
         });
         ticking = true;
+      }
     }
-}
 
-// Adiciona o listener UMA ÚNICA VEZ
-window.addEventListener('scroll', onScroll);
-// Chama uma vez para definir o estado inicial
-updateQuotesBasedOnScroll();
+    window.addEventListener('scroll', onScroll);
+    updateQuotesBasedOnScroll(); // Chamada inicial
 
     // Taxonomy animation
     const taxonomyObserver = new IntersectionObserver((entries) => {
@@ -1009,6 +993,7 @@ updateQuotesBasedOnScroll();
           nodes.forEach((node, i) => {
             node.style.animationDelay = `${0.2 + i * 0.08}s`;
           });
+          taxonomyObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
@@ -1046,6 +1031,7 @@ updateQuotesBasedOnScroll();
               type();
             }, delay);
           });
+          terminalObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
@@ -1080,6 +1066,7 @@ updateQuotesBasedOnScroll();
               container.appendChild(div);
             }, delay);
           });
+          chatbotObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
