@@ -25,7 +25,7 @@
       overflow-x: hidden;
     }
 
-    /* Navbar Desktop - Three elements: left, center, right */
+   /* Navbar Desktop - Three elements: left, center, right */
     .navbar-desktop {
       position: fixed;
       top: 2rem;
@@ -44,11 +44,10 @@
       visibility: hidden;
     }
 
-    /* Left side - About & Case Studies - VERTICAL */
+    /* Left side - About & Case Studies */
     .nav-left {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      gap: 1.5rem;
     }
 
     .nav-left a {
@@ -747,8 +746,8 @@
 
     @media (max-width: 768px) {
       .hero-title { font-size: 38px; line-height: 56px; letter-spacing: -1px; }
-      .navbar-desktop { padding: 0 1rem; top: 1rem; }
-      .nav-left { gap: 0.5rem; }
+       .navbar-desktop { padding: 0 1rem; top: 1rem; }
+      .nav-left { gap: 1rem; }
       .nav-left a { font-size: 12px; }
       .nav-center { font-size: 0.875rem; white-space: nowrap; }
       .nav-right .get-in-touch { padding: 0.35rem 0.9rem; font-size: 0.75rem; }
@@ -759,7 +758,7 @@
 </head>
 <body>
 
-  <!-- Desktop Navbar: Left (about/case), Center (name), Right (get in touch) -->
+ <!-- Desktop Navbar: Left (about/case), Center (name), Right (get in touch) -->
   <div class="navbar-desktop" id="desktopNav">
     <div class="nav-left">
       <a href="#about">about me</a>
@@ -781,6 +780,7 @@
       <a href="#cases">case studies</a>
     </div>
   </div>
+
 
   <!-- Hero Section with Video -->
   <section class="hero">
@@ -1005,9 +1005,9 @@
     // Compact Navbar on scroll + hide desktop navbar
     const compactNav = document.getElementById('compactNav');
     const desktopNav = document.getElementById('desktopNav');
-
 let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+
+    
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
