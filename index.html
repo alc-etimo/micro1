@@ -1125,6 +1125,9 @@ body {
 
       <div class="case-anim">
         <div class="speech-container">
+           <audio id="case1-audio" preload="none">
+  <source src="speech-sample.m4a" type="audio/mpeg">
+</audio>
           <div class="speech-wave" id="speechWave"></div>
           <div class="speech-rows">
             <div class="speech-row"><span class="speech-dim">Nativeness</span><span class="speech-score native">3 · Native-like</span></div>
@@ -1422,15 +1425,17 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 function speechPlay(btn) {
   const container = btn.closest('.speech-container');
   const wave = container.querySelector('.speech-wave');
+  const audio = container.querySelector('#case1-audio');
   const playing = wave.classList.toggle('playing');
   btn.textContent = playing ? '❚❚' : '▶';
-  if (playing) {
-    setTimeout(() => {
-      if (wave.classList.contains('playing')) {
-        wave.classList.remove('playing');
-        btn.textContent = '▶';
-      }
-    }, 6000);
+
+  if (audio) {
+    if (playing) audio.play().catch(() => {});
+    else audio.pause();
+    audio.onended = () => {
+      wave.classList.remove('playing');
+      btn.textContent = '▶';
+    };
   }
 }
 
