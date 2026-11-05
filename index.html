@@ -70,15 +70,14 @@ body {
 
 /* Left: links em coluna (About em cima, Cases embaixo) */
 .nav-links {
-  display: flex;
+    display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;      /* centraliza verticalmente dentro da célula do grid */
-  gap: 0.1rem;
+  justify-content: center;
+  gap: 0.35rem;
   grid-column: 1;
   justify-self: start;
-  align-self: center;           /* garante que o próprio .nav-links fique no meio da linha */
-  height: 100%;                 /* ocupa a altura toda da célula para o center funcionar */
+  align-self: center;
 }
 .nav-links a {
   font-weight: 300;
@@ -184,12 +183,11 @@ grid-column: 2;
   width: 100%;
 }
 .navbar.scrolled .nav-links {
-  flex-direction: row;
-  align-items: center;          /* centraliza no eixo transversal (vertical) */
-  justify-content: center;      /* centraliza no eixo principal (horizontal) */
+ flex-direction: row;
+  align-items: center;
+  justify-content: center;
   align-self: center;
   gap: 1.25rem;
-  height: auto;                 /* no scroll não precisa mais de height 100% */
 }
 .navbar.scrolled .nav-logo {
   font-size: 1.15rem;
@@ -208,12 +206,12 @@ padding: 0;
    HERO — título centralizado, um pouco mais alto
    ===================================================== */
 .hero {
-  position: relative;
+   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 22vh 2rem 4rem; /* subiu o título (era 8rem) */
+  padding: 28vh 2rem 4rem;   /* era 22vh — desceu 6vh */
   overflow: hidden;
 }
 .hero-wave {
@@ -224,6 +222,16 @@ padding: 0;
     radial-gradient(ellipse at 30% 40%, rgba(59,130,246,0.10), transparent 55%),
     radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.08), transparent 55%),
     #000;
+}
+   .hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.55;
+  filter: brightness(0.7);
 }
 .hero-wave span {
   display: block; width: 3px; border-radius: 2px;
@@ -380,6 +388,12 @@ padding: 0;
   letter-spacing: 0.05em;
   overflow: hidden;
   position: relative;
+}
+   .metric-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .metric-image .ph-label {
   position: absolute;
@@ -1010,11 +1024,11 @@ padding: 0;
      HERO
      ============================================================ -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="">
+    <source src="video-hero.mp4" type="video/mp4">
+  </video>
   <div class="hero-wave" id="heroWave" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">Speech &amp; audio<br>evaluated with evidence.</h1>
-  </div>
 </section>
 
 <!-- ============================================================
@@ -1045,9 +1059,8 @@ padding: 0;
           speaker attribution. The foundation for reliable speech evaluation.
         </p>
         <div class="metric-image">
-          <span>IMG placeholder · waveform + transcript overlay</span>
-          <span class="ph-label">sugestão: screenshot de transcript + timeline</span>
-        </div>
+  <img src="metrics1.jpg" alt="1,000+ hours transcribed" loading="lazy">
+</div>
       </div>
 
       <!-- Metric 2 -->
@@ -1063,10 +1076,8 @@ padding: 0;
           from legitimate regional features.
         </p>
         <div class="metric-image">
-          <span>IMG placeholder · waveform + IPA overlay</span>
-          <span class="ph-label">sugestão: waveform com anotações IPA coloridas</span>
-        </div>
-      </div>
+          <img src="metrics2.jpg" alt="IPA · NURC-SP annotation" loading="lazy">
+              </div>
 
       <!-- Metric 3 -->
       <div class="metric-item" data-metric="3">
@@ -1080,9 +1091,7 @@ padding: 0;
           of São Paulo (USP).
         </p>
         <div class="metric-image">
-          <span>IMG placeholder · studio / desk / audio setup</span>
-          <span class="ph-label">sugestão: close de fones + caderno com anotações</span>
-        </div>
+          <img src="metrics3.jpg" alt="10+ years of experience" loading="lazy">
       </div>
 
       <!-- Metric 4 -->
@@ -1096,9 +1105,7 @@ padding: 0;
           calibration sessions, and documentation intended for engineering
           teams — clear, concise, and consistent.
         </p>
-        <div class="metric-image">
-          <span><img src="https://github.com/alc-etimo/micro1/edit/main/metrics1?raw=true"/></span></div>
-      </div>
+       <img src="metrics4.jpg" alt="C1–C2 English proficiency" loading="lazy">
     </div>
   </div>
 </section>
