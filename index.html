@@ -11,7 +11,7 @@
 
 <style>
 /* =====================================================
-   TOKENS (alinhados com a paleta micro1 do CSS anexo)
+   TOKENS
    ===================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -53,7 +53,7 @@ body {
 }
 
 /* =====================================================
-   NAVBAR — 3 zonas, full width, fundo preto no scroll
+   NAVBAR
    ===================================================== */
 .navbar {
   position: fixed;
@@ -62,15 +62,14 @@ body {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 0.1rem;
+  gap: 1rem;
   padding: 1.25rem 2rem;
   transition: all .35s cubic-bezier(0.16,1,0.3,1);
   background: transparent;
 }
 
-/* Left: links em coluna (About em cima, Cases embaixo) */
 .nav-links {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -90,9 +89,8 @@ body {
 }
 .nav-links a:hover { color: rgba(255,255,255,0.95); }
 
-/* Center: logo */
 .nav-logo {
-grid-column: 2;
+  grid-column: 2;
   justify-self: center;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
@@ -104,7 +102,6 @@ grid-column: 2;
   white-space: nowrap;
 }
 
-/* Right: CTA com quadrado + chevron gradiente */
 .nav-cta {
   grid-column: 3;
   justify-self: end;
@@ -166,7 +163,6 @@ grid-column: 2;
   100% { transform: translateX(0); opacity: 1; }
 }
 
-/* NAVBAR NO SCROLL — full width, fundo preto, borda reta, "a." à esquerda */
 .navbar.scrolled {
   background: #000;
   padding: 0.75rem 2rem;
@@ -174,7 +170,7 @@ grid-column: 2;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   gap: 1.5rem;
   left: 0;
   right: 0;
@@ -183,7 +179,7 @@ grid-column: 2;
   width: 100%;
 }
 .navbar.scrolled .nav-links {
- flex-direction: row;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   align-self: center;
@@ -195,35 +191,26 @@ grid-column: 2;
 }
 .navbar.scrolled .nav-cta {
   background: #e5e5e5;
-border-radius: .3rem;
-padding: 0;
 }
-.navbar.scrolled .nav-cta:hover { background: #a8a8a8; } /* hover mais escuro */
+.navbar.scrolled .nav-cta:hover { background: #a8a8a8; }
 .navbar.scrolled .nav-cta .cta-square { display: none; }
 .navbar.scrolled .nav-cta .cta-label { padding: 0.4rem 0.85rem; font-size: 0.72rem; }
 
 /* =====================================================
-   HERO — título centralizado, um pouco mais alto
+   HERO — vídeo de fundo + waveform fallback + título mais baixo
    ===================================================== */
 .hero {
-   position: relative;
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 28vh 2rem 4rem;   /* era 22vh — desceu 6vh */
+  padding: 28vh 2rem 4rem;   /* título mais baixo */
   overflow: hidden;
 }
-.hero-wave {
-  position: absolute; inset: 0; z-index: 1;
-  display: flex; align-items: center; justify-content: center;
-  gap: 3px; overflow: hidden; padding: 0 4rem;
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(59,130,246,0.10), transparent 55%),
-    radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.08), transparent 55%),
-    #000;
-}
-   .hero-video {
+
+/* Vídeo de fundo (placeholder = video-hero.mp4) */
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -232,6 +219,17 @@ padding: 0;
   z-index: 0;
   opacity: 0.55;
   filter: brightness(0.7);
+}
+
+.hero-wave {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 3px; overflow: hidden; padding: 0 4rem;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(59,130,246,0.10), transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.08), transparent 55%),
+    #000;
+  opacity: 0.85; /* deixa o vídeo transparecer por trás da waveform */
 }
 .hero-wave span {
   display: block; width: 3px; border-radius: 2px;
@@ -247,6 +245,7 @@ padding: 0;
   0%,100% { transform: scaleY(0.35); opacity: 0.35; }
   50%     { transform: scaleY(1.0); opacity: 0.95; }
 }
+
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.25), rgba(0,0,0,0.7));
@@ -267,7 +266,7 @@ padding: 0;
 }
 
 /* =====================================================
-   ABOUT — título/subtítulo sticky + métricas scrollando
+   ABOUT
    ===================================================== */
 .about {
   position: relative;
@@ -283,7 +282,6 @@ padding: 0;
   align-items: start;
 }
 
-/* LEFT — fixo */
 .about-left {
   position: sticky;
   top: 8rem;
@@ -313,7 +311,7 @@ padding: 0;
   -webkit-text-fill-color: transparent;
   color: var(--text-color--text-primary);
   letter-spacing: -0.02em;
-  font-size: 2.5rem; /* diminuiu de 3.25rem */
+  font-size: 2.5rem;
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 1.25rem;
@@ -327,7 +325,6 @@ padding: 0;
   font-weight: 300;
 }
 
-/* RIGHT — métricas que scrollam */
 .about-right {
   position: relative;
   display: flex;
@@ -349,13 +346,12 @@ padding: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.6rem; /* fonte menor */
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #fff;
 }
-/* Chevron do tamanho da fonte, com gradiente na própria cor do ícone */
 .metric-title .chev {
   font-size: 1em;
   line-height: 1;
@@ -389,7 +385,7 @@ padding: 0;
   overflow: hidden;
   position: relative;
 }
-   .metric-image img {
+.metric-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -405,7 +401,7 @@ padding: 0;
 }
 
 /* =====================================================
-   MANIFESTO — borda gradiente + blur + noise (padrão h_l_main)
+   MANIFESTO
    ===================================================== */
 .manifesto {
   position: relative;
@@ -415,8 +411,6 @@ padding: 0;
   justify-content: center;
   align-items: center;
 }
-
-/* Wrapper com borda gradiente (padrão .h_l_main) */
 .h_l_main {
   position: relative;
   padding: 0.75rem;
@@ -433,8 +427,6 @@ padding: 0;
   overflow: hidden;
   padding: 0.75rem;
 }
-
-/* Noise overlay (padrão .h_l_overlay) */
 .h_l_overlay {
   position: absolute;
   inset: 0;
@@ -445,8 +437,6 @@ padding: 0;
   background-repeat: repeat;
   background-size: 100px;
 }
-
-/* Wrap com blur + fundo (padrão .h_l_wrap) */
 .h_l_wrap {
   position: relative;
   z-index: 1;
@@ -460,8 +450,6 @@ padding: 0;
   border-radius: 1rem;
   overflow: hidden;
 }
-
-/* Imagem de fundo (padrão .h_l_img) */
 .h_l_img {
   position: absolute;
   inset: 0;
@@ -471,7 +459,6 @@ padding: 0;
   z-index: -2;
   opacity: 0.5;
 }
-
 .manifesto-inner {
   position: relative;
   z-index: 3;
@@ -498,7 +485,7 @@ padding: 0;
 }
 
 /* =====================================================
-   CASES — coluna única, largura total, mesmo bg/border
+   CASES
    ===================================================== */
 .cases {
   background: #000;
@@ -509,7 +496,6 @@ padding: 0;
   margin: 0 auto 4rem;
   text-align: center;
 }
-/* Título em gradiente */
 .cases-title {
   font-size: 3rem;
   font-weight: 400;
@@ -552,7 +538,7 @@ padding: 0;
   margin-bottom: 1.25rem;
 }
 .case-icon {
-  width: 2rem; /* aumentou (era 1.5rem) */
+  width: 2rem;
   height: 2rem;
   color: var(--grey-icon);
   flex-shrink: 0;
@@ -586,7 +572,6 @@ padding: 0;
   margin-bottom: 1.25rem;
   min-height: 220px;
 }
-
 .case-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -696,16 +681,6 @@ padding: 0;
   padding: 0 3px;
   border-radius: 2px;
 }
-.typing-cursor {
-  display: inline-block;
-  width: 6px;
-  height: 14px;
-  background: var(--emerald);
-  margin-left: 2px;
-  vertical-align: middle;
-  animation: blink 0.9s steps(2) infinite;
-}
-@keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
 
 /* CASE 3 — IPA */
 .ipa-container {
@@ -779,14 +754,14 @@ padding: 0;
 .av-field-value.amber { color: var(--amber); }
 
 /* =====================================================
-   FOOTER (padrão footer_container + footer_logo-wrap)
+   FOOTER
    ===================================================== */
 .footer {
   border-top: 1px solid var(--base-color-white--8);
   background: #000;
   position: relative;
   overflow: hidden;
-  padding-bottom: 18rem; /* espaço para o footer_logo-wrap */
+  padding-bottom: 18rem;
 }
 .footer-inner {
   max-width: 1100px;
@@ -840,9 +815,8 @@ padding: 0;
 .footer-social a:hover { border-color: #fff; color: #fff; }
 .footer-social svg { width: 16px; height: 16px; }
 
-/* ---------- footer_logo-wrap (adaptado do site micro1) ---------- */
+/* footer_logo-wrap (adaptado — agora com o nome em texto) */
 .footer_logo-wrap {
-  
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -854,30 +828,23 @@ padding: 0;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .footer_logo-wrap::before {
-  content: "ariane lesnyak.";
+  content: "Ariane Lesnyak.";
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: clamp(3rem, 11vw, 10rem);
   letter-spacing: -0.04em;
   line-height: 1;
-  color: transparent;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: rgba(255,255,255,0.06);
   white-space: nowrap;
   text-align: center;
   user-select: none;
-  position: relative;
-  z-index: 3;   /* fica acima do .footer_logo-fill-wrap, então o blur aparece por trás */
 }
 
-/* Camada de preenchimento que segue o mouse */
 .footer_logo-fill-wrap {
   z-index: 2;
   width: 100%;
@@ -886,8 +853,6 @@ padding: 0;
   inset: 0;
   pointer-events: none;
 }
-
-/* Círculo com blur que acompanha o cursor */
 .footer_logo-fill-circ {
   opacity: 0;
   filter: blur(50px);
@@ -904,13 +869,8 @@ padding: 0;
   transition: opacity .6s ease-in-out;
   transform: translate(var(--pointer-x, 0px), var(--pointer-y, 0px)) translateZ(0);
 }
+.footer.pointer-active .footer_logo-fill-circ { opacity: 0.9; }
 
-/* Quando o ponteiro está sobre o footer, revela o círculo */
-.footer.pointer-active .footer_logo-fill-circ {
-  opacity: 0.9;
-}
-
-/* Inner circles (apenas para manter a profundidade visual do original) */
 .footer_logo-fill-circ-2 {
   background-color: #707070;
   border-radius: 50%;
@@ -925,15 +885,6 @@ padding: 0;
   border-radius: 50%;
   width: 50%;
   height: 50%;
-}
-
-/* Máscara via SVG do logo — aplicada quando o footer está em hover
-   (adapta o comportamento do site micro1: o círculo "pinta" o logo) */
-@media screen and (min-width: 992px) {
-  .footer.pointer-active .footer_logo-fill-wrap {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 }
 
 /* =====================================================
@@ -956,7 +907,7 @@ padding: 0;
   .nav-logo { font-size: 1.1rem; }
   .nav-cta .cta-label { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
   .hero-title { font-size: 2.5rem; }
-  .hero { padding-top: 18vh; }
+  .hero { padding-top: 22vh; }
 
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-left { position: static; }
@@ -976,6 +927,7 @@ padding: 0;
   .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; padding: 3rem 1.5rem 0; }
   .footer { padding-bottom: 12rem; }
   .footer_logo-wrap { height: 12rem; }
+  .footer_logo-wrap::before { font-size: clamp(2rem, 14vw, 6rem); }
 
   .speech-rows, .av-fields { grid-template-columns: 1fr; }
 }
@@ -992,16 +944,14 @@ padding: 0;
      NAVBAR
      ============================================================ -->
 <nav class="navbar" id="navbar">
-  
-
-  <a href="#" class="nav-logo" id="navLogo">ariane lesnyak.</a>
-
-  
-<div class="nav-links">
+  <div class="nav-links">
     <a href="#about">About me</a>
     <a href="#cases">Case studies</a>
   </div>
-<a href="#contact" class="nav-cta" id="navCta">
+
+  <a href="#" class="nav-logo" id="navLogo">Ariane Lesnyak.</a>
+
+  <a href="#contact" class="nav-cta" id="navCta">
     <span class="cta-label">Get in touch</span>
     <span class="cta-square">
       <span class="cta-chevron">
@@ -1021,18 +971,23 @@ padding: 0;
 </nav>
 
 <!-- ============================================================
-     HERO
+     HERO — vídeo de fundo + waveform fallback + título mais baixo
      ============================================================ -->
 <section class="hero">
+  <!-- PLACEHOLDER: vídeo do hero (video-hero.mp4 no repo) -->
   <video class="hero-video" autoplay muted loop playsinline poster="">
     <source src="video-hero.mp4" type="video/mp4">
   </video>
+
   <div class="hero-wave" id="heroWave" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Speech &amp; audio<br>evaluated with evidence.</h1>
+  </div>
 </section>
 
 <!-- ============================================================
-     ABOUT — título/subtítulo fixos + métricas scrollando
+     ABOUT
      ============================================================ -->
 <section class="about" id="about">
   <div class="about-grid">
@@ -1047,7 +1002,7 @@ padding: 0;
     </div>
 
     <div class="about-right">
-      <!-- Metric 1 -->
+      <!-- Metric 1 → metrics1.jpg -->
       <div class="metric-item" data-metric="1">
         <div class="metric-title">
           1,000+ hours transcribed
@@ -1059,11 +1014,11 @@ padding: 0;
           speaker attribution. The foundation for reliable speech evaluation.
         </p>
         <div class="metric-image">
-  <img src="metrics1.jpg" alt="1,000+ hours transcribed" loading="lazy">
-</div>
+          <img src="metrics1.jpg" alt="1,000+ hours transcribed" loading="lazy">
+        </div>
       </div>
 
-      <!-- Metric 2 -->
+      <!-- Metric 2 → metrics2.jpg -->
       <div class="metric-item" data-metric="2">
         <div class="metric-title">
           IPA · NURC-SP annotation
@@ -1077,9 +1032,10 @@ padding: 0;
         </p>
         <div class="metric-image">
           <img src="metrics2.jpg" alt="IPA · NURC-SP annotation" loading="lazy">
-              </div>
+        </div>
+      </div>
 
-      <!-- Metric 3 -->
+      <!-- Metric 3 → metrics3.jpg -->
       <div class="metric-item" data-metric="3">
         <div class="metric-title">
           10+ years of experience
@@ -1092,9 +1048,10 @@ padding: 0;
         </p>
         <div class="metric-image">
           <img src="metrics3.jpg" alt="10+ years of experience" loading="lazy">
+        </div>
       </div>
 
-      <!-- Metric 4 -->
+      <!-- Metric 4 → metrics4.jpg -->
       <div class="metric-item" data-metric="4">
         <div class="metric-title">
           C1–C2 English proficiency
@@ -1105,13 +1062,16 @@ padding: 0;
           calibration sessions, and documentation intended for engineering
           teams — clear, concise, and consistent.
         </p>
-       <img src="metrics4.jpg" alt="C1–C2 English proficiency" loading="lazy">
+        <div class="metric-image">
+          <img src="metrics4.jpg" alt="C1–C2 English proficiency" loading="lazy">
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     MANIFESTO — h_l_main com borda gradiente + noise + blur
+     MANIFESTO
      ============================================================ -->
 <section class="manifesto">
   <div class="h_l_main">
@@ -1340,7 +1300,7 @@ padding: 0;
 </section>
 
 <!-- ============================================================
-     FOOTER — com footer_logo-wrap + pointer effect
+     FOOTER
      ============================================================ -->
 <footer class="footer" id="contact">
   <div class="footer-inner">
@@ -1360,7 +1320,6 @@ padding: 0;
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
         </a>
         <a href="#" aria-label="CV">
-          <!-- Ícone de documento branco (SVG), mesmo tamanho do LinkedIn -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
@@ -1375,12 +1334,13 @@ padding: 0;
     <div class="footer-col" style="text-align: right;">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:ariane.etimo@gmail.com">ariane.etimo@gmail.com</a></li>        
+        <li><a href="mailto:ariane.etimo@gmail.com">ariane.etimo@gmail.com</a></li>
+        <li><a href="https://alc-etimo.github.io/PixAI/" target="_blank" rel="noopener">PixAI Portfolio</a></li>
+        <li><a href="https://alc-etimo.github.io/turing/" target="_blank" rel="noopener">Turing Portfolio</a></li>
       </ul>
     </div>
   </div>
 
-  <!-- footer_logo-wrap (adaptado do site micro1) -->
   <div class="footer_logo-wrap" id="footerLogoWrap">
     <div class="footer_logo-fill-wrap" id="footerFillWrap">
       <div class="footer_logo-fill-circ" id="footerFillCirc">
@@ -1394,7 +1354,7 @@ padding: 0;
 
 <script>
 /* =============================================================
-   HERO WAVEFORM
+   HERO WAVEFORM (fallback visual — o vídeo roda por cima)
    ============================================================= */
 (function buildHeroWave() {
   const wave = document.getElementById('heroWave');
@@ -1425,13 +1385,11 @@ window.addEventListener('scroll', () => {
 });
 
 /* =============================================================
-   ABOUT — sticky + metric reveal
+   METRIC REVEAL
    ============================================================= */
 const metricObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.25 });
 document.querySelectorAll('.metric-item').forEach(el => metricObserver.observe(el));
@@ -1614,27 +1572,19 @@ function speechPlay(btn) {
 })();
 
 /* =============================================================
-   FOOTER — efeito de círculo que segue o ponteiro
-   (adapta o footer_logo-wrap do site micro1)
+   FOOTER POINTER EFFECT
    ============================================================= */
 (function footerPointer() {
   const footer = document.querySelector('.footer');
   const fillWrap = document.getElementById('footerFillWrap');
   if (!footer || !fillWrap) return;
 
-  footer.addEventListener('mouseenter', () => {
-    footer.classList.add('pointer-active');
-  });
-  footer.addEventListener('mouseleave', () => {
-    footer.classList.remove('pointer-active');
-  });
+  footer.addEventListener('mouseenter', () => footer.classList.add('pointer-active'));
+  footer.addEventListener('mouseleave', () => footer.classList.remove('pointer-active'));
   footer.addEventListener('mousemove', (e) => {
     const rect = footer.getBoundingClientRect();
-    // Coordenadas relativas ao canto superior esquerdo do footer
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    // O círculo tem 300x300 e está posicionado em top:-150 left:-200.
-    // Para centralizar o blur exatamente no ponteiro, adicionamos +200/+150.
     fillWrap.style.setProperty('--pointer-x', (x + 200) + 'px');
     fillWrap.style.setProperty('--pointer-y', (y + 150) + 'px');
   });
