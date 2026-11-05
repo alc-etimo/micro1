@@ -1,1411 +1,1661 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ariane Lesnyak · Data Entry Keyer | Data Entry & AI</title>
-  <meta name="description" content="10+ years in translation, localization & LQA. 75+ WPM. Expert in AI content validation, taxonomy governance, and MTPE: delivering 98% accuracy for global brands.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ariane Lesnyak · Portuguese Bilingual Expert (Brazil) | Micro1</title>
+<meta name="description" content="Native Brazilian Portuguese linguist with 10+ years in audiovisual transcription, speech evaluation, and linguistic QA.">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   TOKENS (alinhados com a paleta micro1 do CSS anexo)
+   ===================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000000;
+  --ink: #ffffff;
+  --muted: rgba(255,255,255,0.55);
+  --muted-2: rgba(255,255,255,0.35);
+  --line: rgba(255,255,255,0.08);
+  --line-2: rgba(255,255,255,0.14);
+  --panel: #0a0a0a;
+
+  --base-color-white--100: #ffffff;
+  --base-color-white--90: #ffffffe6;
+  --base-color-white--8: #ffffff14;
+  --base-color-black--20: #0006;
+  --base-color-grey--light: #191919;
+  --base-color-grey--lighter: #313131;
+  --text-color--text-primary: #ffffff;
+  --text-color--text-secondary: #fff9;
+
+  --btn-bg: #ffffffe6;
+  --blue: #3b82f6;
+  --emerald: #10b981;
+  --violet: #8b5cf6;
+  --amber: #f59e0b;
+  --grey-icon: rgba(255,255,255,0.55);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================
+   NAVBAR — 3 zonas, full width, fundo preto no scroll
+   ===================================================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 1.25rem 2rem;
+  transition: all .35s cubic-bezier(0.16,1,0.3,1);
+  background: transparent;
+}
+
+/* Left: links em coluna (About em cima, Cases embaixo) */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;      /* centraliza verticalmente dentro da célula do grid */
+  gap: 0.1rem;
+  grid-column: 1;
+  justify-self: start;
+  align-self: center;           /* garante que o próprio .nav-links fique no meio da linha */
+  height: 100%;                 /* ocupa a altura toda da célula para o center funcionar */
+}
+.nav-links a {
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color .2s ease;
+  line-height: 1.3;
+}
+.nav-links a:hover { color: rgba(255,255,255,0.95); }
+
+/* Center: logo */
+.nav-logo {
+grid-column: 2;
+  justify-self: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: var(--ink);
+  letter-spacing: -0.4px;
+  text-decoration: none;
+  transition: font-size .3s ease, transform .3s ease;
+  white-space: nowrap;
+}
+
+/* Right: CTA com quadrado + chevron gradiente */
+.nav-cta {
+  grid-column: 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--btn-bg);
+  color: #000;
+  border-radius: .3rem;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .25s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+.nav-cta .cta-label {
+  padding: 0.55rem 0.95rem;
+  color: #000;
+  transition: color .25s;
+}
+.nav-cta .cta-square {
+  width: 32px;
+  height: 32px;
+  background: #000;
+  border-radius: .3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.nav-cta .cta-chevron {
+  width: 12.8px;
+  height: 12.8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .35s cubic-bezier(0.16,1,0.3,1);
+  transform: translateX(0);
+}
+.nav-cta .cta-chevron svg {
+  width: 12.8px;
+  height: 12.8px;
+  display: block;
+}
+.nav-cta:hover { background: #e6e6e6; }
+.nav-cta:hover .cta-chevron {
+  animation: chevronSlide 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes chevronSlide {
+  0%   { transform: translateX(0); opacity: 1; }
+  45%  { transform: translateX(24px); opacity: 0; }
+  46%  { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* NAVBAR NO SCROLL — full width, fundo preto, borda reta, "a." à esquerda */
+.navbar.scrolled {
+  background: #000;
+  padding: 0.75rem 2rem;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.5rem;
+  left: 0;
+  right: 0;
+  transform: none;
+  margin: 0;
+  width: 100%;
+}
+.navbar.scrolled .nav-links {
+  flex-direction: row;
+  align-items: center;          /* centraliza no eixo transversal (vertical) */
+  justify-content: center;      /* centraliza no eixo principal (horizontal) */
+  align-self: center;
+  gap: 1.25rem;
+  height: auto;                 /* no scroll não precisa mais de height 100% */
+}
+.navbar.scrolled .nav-logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.navbar.scrolled .nav-cta {
+  background: #e5e5e5;
+border-radius: .3rem;
+padding: 0;
+}
+.navbar.scrolled .nav-cta:hover { background: #a8a8a8; } /* hover mais escuro */
+.navbar.scrolled .nav-cta .cta-square { display: none; }
+.navbar.scrolled .nav-cta .cta-label { padding: 0.4rem 0.85rem; font-size: 0.72rem; }
+
+/* =====================================================
+   HERO — título centralizado, um pouco mais alto
+   ===================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 22vh 2rem 4rem; /* subiu o título (era 8rem) */
+  overflow: hidden;
+}
+.hero-wave {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 3px; overflow: hidden; padding: 0 4rem;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(59,130,246,0.10), transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.08), transparent 55%),
+    #000;
+}
+.hero-wave span {
+  display: block; width: 3px; border-radius: 2px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.15));
+  height: 12%;
+  animation: heroWave 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+.hero-wave span:nth-child(3n) { animation-duration: 3.2s; }
+.hero-wave span:nth-child(4n) { animation-duration: 2.1s; }
+.hero-wave span:nth-child(5n) { animation-duration: 3.6s; }
+@keyframes heroWave {
+  0%,100% { transform: scaleY(0.35); opacity: 0.35; }
+  50%     { transform: scaleY(1.0); opacity: 0.95; }
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25), rgba(0,0,0,0.7));
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  max-width: 1000px;
+  padding: 0 2rem;
+}
+.hero-title {
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.02em;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* =====================================================
+   ABOUT — título/subtítulo sticky + métricas scrollando
+   ===================================================== */
+.about {
+  position: relative;
+  padding: 6rem 5% 8rem;
+  background: #000;
+}
+.about-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* LEFT — fixo */
+.about-left {
+  position: sticky;
+  top: 8rem;
+  align-self: start;
+  text-align: center;
+  z-index: 2;
+}
+.about-image {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a1721ed070156fbb2676424_6a05c67a478d77009ec4ec81_Rectangle%20828797%20(1).webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+.about-title {
+  background: linear-gradient(180deg, var(--base-color-white--100), #999);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text-color--text-primary);
+  letter-spacing: -0.02em;
+  font-size: 2.5rem; /* diminuiu de 3.25rem */
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.about-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  max-width: 500px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* RIGHT — métricas que scrollam */
+.about-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding-top: 4rem;
+}
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1);
+}
+.metric-item.visible { opacity: 1; transform: translateY(0); }
+
+.metric-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.6rem; /* fonte menor */
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+/* Chevron do tamanho da fonte, com gradiente na própria cor do ícone */
+.metric-title .chev {
+  font-size: 1em;
+  line-height: 1;
+  display: inline-block;
+  background: linear-gradient(135deg, #c4b5fd, #ffffff, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 300;
+}
+.metric-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  text-align: left;
+}
+.metric-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0d0d0d;
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  position: relative;
+}
+.metric-image .ph-label {
+  position: absolute;
+  bottom: 0.75rem; left: 0.75rem;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================================
+   MANIFESTO — borda gradiente + blur + noise (padrão h_l_main)
+   ===================================================== */
+.manifesto {
+  position: relative;
+  background: #000;
+  padding: 5rem 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wrapper com borda gradiente (padrão .h_l_main) */
+.h_l_main {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 1100px;
+  background: linear-gradient(150deg, #66666659, #000 50%),
+              linear-gradient(150deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04) 100%, transparent);
+  padding: 2px;
+}
+.h_l_inner {
+  position: relative;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  padding: 0.75rem;
+}
+
+/* Noise overlay (padrão .h_l_overlay) */
+.h_l_overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url('https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a05c7f638d7a1ab0de4e786_Noise%20block.png');
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: 100px;
+}
+
+/* Wrap com blur + fundo (padrão .h_l_wrap) */
+.h_l_wrap {
+  position: relative;
+  z-index: 1;
+  background-color: var(--base-color-black--20);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 5%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Imagem de fundo (padrão .h_l_img) */
+.h_l_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+.manifesto-inner {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 41rem;
+}
+.manifesto-quote {
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: -0.005em;
+}
+.manifesto-meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+
+/* =====================================================
+   CASES — coluna única, largura total, mesmo bg/border
+   ===================================================== */
+.cases {
+  background: #000;
+  padding: 6rem 2rem;
+}
+.cases-header {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+/* Título em gradiente */
+.cases-title {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, var(--base-color-white--100), #999);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text-color--text-primary);
+}
+.cases-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+}
+.cases-list {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case {
+  border: 1px solid var(--base-color-grey--lighter);
+  background-color: var(--base-color-grey--light);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: border-color .3s ease;
+}
+.case:hover { border-color: rgba(255,255,255,0.16); }
+
+.case-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.case-icon {
+  width: 2rem; /* aumentou (era 1.5rem) */
+  height: 2rem;
+  color: var(--grey-icon);
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+  align-self: flex-start;
+}
+.case-title {
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #fff;
+  margin: 0 0 0.4rem;
+}
+.case-summary {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.case-anim {
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #050505;
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
+  min-height: 220px;
+}
+
+.case-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.case-col {
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #080808;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.case-col-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.case-col p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+
+/* CASE 1 — waveform */
+.speech-container {
+  background: var(--panel);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(59,130,246,0.15);
+}
+.speech-wave {
+  display: flex; align-items: center; gap: 2px;
+  height: 46px; margin-bottom: 0.9rem; padding: 0 4px;
+}
+.speech-wave span {
+  display: block; flex: 1; border-radius: 2px;
+  background: rgba(59,130,246,0.5);
+  min-height: 3px;
+  transition: background .3s;
+}
+.speech-wave.playing span {
+  animation: speechPulse 1.1s ease-in-out infinite;
+  background: var(--blue);
+}
+@keyframes speechPulse {
+  0%,100% { transform: scaleY(0.5); }
+  50%     { transform: scaleY(1); }
+}
+.speech-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.25rem; }
+.speech-row {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.85rem; padding: 0.35rem 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.06);
+}
+.speech-dim { color: rgba(255,255,255,0.75); }
+.speech-score {
+  font-size: 0.72rem; padding: 0.1rem 0.5rem;
+  border-radius: 9999px; font-weight: 600;
+}
+.speech-score.native { background: rgba(16,185,129,0.15); color: var(--emerald); }
+.speech-score.dev { background: rgba(245,158,11,0.15); color: var(--amber); }
+.speech-play {
+  margin-top: 0.85rem; display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; color: rgba(255,255,255,0.45);
+}
+.speech-play-btn {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--blue); color: white;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+}
+
+/* CASE 2 — typing loop */
+.typing-container {
+  background: #050505;
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  min-height: 140px;
+}
+.typing-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+}
+.typing-line { color: rgba(255,255,255,0.6); }
+.typing-line .err {
+  background: rgba(239,68,68,0.25);
+  color: #fca5a5;
+  padding: 0 3px;
+  border-radius: 2px;
+  text-decoration: line-through;
+}
+.typing-line .fix {
+  background: rgba(16,185,129,0.2);
+  color: #6ee7b7;
+  padding: 0 3px;
+  border-radius: 2px;
+}
+.typing-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 14px;
+  background: var(--emerald);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.9s steps(2) infinite;
+}
+@keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+
+/* CASE 3 — IPA */
+.ipa-container {
+  background: #050505;
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+.ipa-line {
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity .4s, transform .4s;
+}
+.ipa-line.visible { opacity: 1; transform: translateX(0); }
+.ipa-label {
+  color: rgba(255,255,255,0.35);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+.ipa-orth { color: #e2e8f0; }
+.ipa-phon { color: #c4b5fd; }
+.ipa-phon .mark {
+  background: rgba(139,92,246,0.2);
+  color: #ddd6fe;
+  padding: 0 2px; border-radius: 2px;
+  border-bottom: 1px dashed rgba(139,92,246,0.6);
+}
+
+/* CASE 4 — AV */
+.av-container {
+  background: #050505;
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.av-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.75rem; padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.av-tc { color: rgba(245,158,11,0.8); font-family: monospace; letter-spacing: 0; }
+.av-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.av-field {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .4s, transform .4s;
+}
+.av-field.visible { opacity: 1; transform: translateY(0); }
+.av-field-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  min-width: 68px;
+}
+.av-field-value { color: #e2e8f0; font-weight: 500; }
+.av-field-value.amber { color: var(--amber); }
+
+/* =====================================================
+   FOOTER (padrão footer_container + footer_logo-wrap)
+   ===================================================== */
+.footer {
+  border-top: 1px solid var(--base-color-white--8);
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 18rem; /* espaço para o footer_logo-wrap */
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4.5rem 2.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.footer-col h4 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 0.75rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li {
+  font-size: 0.85rem; font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.5rem;
+}
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+
+.footer-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-center-logo {
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: -0.4px;
+}
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  transition: all .2s;
+}
+.footer-social a:hover { border-color: #fff; color: #fff; }
+.footer-social svg { width: 16px; height: 16px; }
+
+/* ---------- footer_logo-wrap (adaptado do site micro1) ---------- */
+.footer_logo-wrap {
   
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: #000000;
-      color: #ffffff;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    /* ─── LEFT SIDEBAR NAVBAR ─── */
-    .navbar-left {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 220px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 2.5rem 2rem;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-    }
-
-    .navbar-left.hide {
-      transform: translateX(-260px);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .nav-logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #ffffff;
-      letter-spacing: -0.3px;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-
-    .nav-links a {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      line-height: 1.4;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-
-    .nav-links a::before {
-      content: '';
-      position: absolute;
-      left: -1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3px;
-      height: 0;
-      background: #ffffff;
-      border-radius: 2px;
-      transition: height 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: rgba(255,255,255,0.9);
-    }
-
-    .nav-links a:hover::before {
-      height: 14px;
-    }
-
-    .nav-bottom .get-in-touch {
-      background-color: rgba(255,255,255,0.06);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.75);
-      padding: 0.5rem 1.1rem;
-      border-radius: 2rem;
-      font-size: 0.8rem;
-      font-weight: 400;
-      font-family: 'Outfit', sans-serif;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-block;
-    }
-
-    .nav-bottom .get-in-touch:hover {
-      background-color: rgba(255,255,255,0.12);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.3);
-      color: #fff;
-    }
-
-    /* ─── COMPACT NAV (scroll) ─── */
-    .nav-compact {
-      position: fixed;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1001;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(16px);
-      border-radius: 2rem;
-      padding: 0.55rem 1.2rem;
-      transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .nav-compact.visible {
-      top: 1rem;
-    }
-
-    .nav-compact .nav-scroll-menu {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .nav-compact a {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      padding: 0.25rem 0.6rem;
-      transition: color 0.2s;
-    }
-
-    .nav-compact a:hover {
-      color: #fff;
-    }
-
-    .nav-compact .compact-logo {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #ffffff;
-      margin-right: 0.5rem;
-      padding: 0.25rem 0;
-    }
-
-    .nav-compact .compact-cta {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.8);
-      padding: 0.3rem 0.9rem;
-      border-radius: 1rem;
-      font-size: 0.78rem;
-      font-weight: 400;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .nav-compact .compact-cta:hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    /* ─── MAIN CONTENT OFFSET ─── */
-    .main-content {
-      margin-left: 220px;
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 90%;
-      padding: 0 2rem;
-    }
-
-    .hero-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 88px;
-      line-height: 92.4px;
-      letter-spacing: -2.2px;
-      color: #ffffff;
-      margin-bottom: 2rem;
-    }
-
-    /* ─── BLACK BRIDGE SECTION ─── */
-    .bridge-section {
-      background: #000000;
-      min-height: 33.33vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bridge-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.02) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .bridge-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1000px;
-      gap: 3rem;
-    }
-
-    .bridge-stat {
-      text-align: center;
-      flex: 1;
-    }
-
-    .bridge-number {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 200;
-      font-size: clamp(36px, 5vw, 60px);
-      letter-spacing: -2px;
-      color: #ffffff;
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .bridge-label {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .bridge-divider {
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.08);
-      flex-shrink: 0;
-    }
-
-    /* ─── DATA SECTION ─── */
-    .data-section {
-      position: relative;
-      min-height: 220vh;
-      background: #000000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-      overflow: hidden;
-    }
-
-    .data-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('./img.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-
-    .data-content {
-      position: sticky;
-      top: calc(50vh - 100px);
-      z-index: 1;
-      text-align: left;
-      width: 100%;
-      max-width: 800px;
-      min-height: 200px;
-    }
-
-    .data-quote {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 24px;
-      line-height: 36px;
-      color: rgba(255,255,255,0.8);
-      position: absolute;
-      top: 50%;
-      left: 40%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
-      padding: 0 2rem;
-      transition: opacity 0.6s ease;
-      pointer-events: none;
-    }
-
-    .data-quote.hidden { opacity: 0; }
-    .data-quote.visible { opacity: 1; }
-
-    .data-metric-highlight {
-      font-weight: 500;
-      color: #ffffff;
-    }
-
-    /* ─── CASES SECTION ─── */
-    .cases-section {
-      background: #000000;
-      padding: 6rem 2rem 6rem 3rem;
-    }
-
-    .cases-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .cases-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 44px;
-      line-height: 57.2px;
-      letter-spacing: -1.1px;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 1rem;
-    }
-
-    .cases-subtitle {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 18px;
-      line-height: 28px;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .cases-container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ─── CASE CARDS — COLORED BORDERS ─── */
-    .case-card {
-      border-radius: 1.5rem;
-      overflow: hidden;
-      margin-bottom: 3rem;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-      position: relative;
-    }
-
-    /* Each card gets its own accent color via data attr */
-    .case-card[data-accent="blue"] {
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      background: rgba(59, 130, 246, 0.03);
-      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-    }
-    .case-card[data-accent="blue"]:hover {
-      border-color: rgba(59, 130, 246, 0.6);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.12);
-    }
-
-    .case-card[data-accent="emerald"] {
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      background: rgba(16, 185, 129, 0.03);
-    }
-    .case-card[data-accent="emerald"]:hover {
-      border-color: rgba(16, 185, 129, 0.6);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.1);
-    }
-
-    .case-card[data-accent="violet"] {
-      border: 1px solid rgba(139, 92, 246, 0.35);
-      background: rgba(139, 92, 246, 0.03);
-    }
-    .case-card[data-accent="violet"]:hover {
-      border-color: rgba(139, 92, 246, 0.6);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
-    }
-
-    .case-card[data-accent="amber"] {
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      background: rgba(245, 158, 11, 0.03);
-    }
-    .case-card[data-accent="amber"]:hover {
-      border-color: rgba(245, 158, 11, 0.6);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(245, 158, 11, 0.1);
-    }
-
-    .case-header {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .case-header-top {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .case-icon {
-      width: 1.4rem;
-      height: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .case-card[data-accent="blue"] .case-icon { color: #3b82f6; }
-    .case-card[data-accent="emerald"] .case-icon { color: #10b981; }
-    .case-card[data-accent="violet"] .case-icon { color: #8b5cf6; }
-    .case-card[data-accent="amber"] .case-icon { color: #f59e0b; }
-
-    .case-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 400;
-      font-size: 1.15rem;
-      color: #ffffff;
-    }
-
-    .case-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .case-metric {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 9999px;
-      font-weight: 400;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .case-card[data-accent="blue"] .case-metric {
-      background: rgba(59,130,246,0.12);
-      color: #93c5fd;
-      border: 1px solid rgba(59,130,246,0.2);
-    }
-    .case-card[data-accent="emerald"] .case-metric {
-      background: rgba(16,185,129,0.12);
-      color: #6ee7b7;
-      border: 1px solid rgba(16,185,129,0.2);
-    }
-    .case-card[data-accent="violet"] .case-metric {
-      background: rgba(139,92,246,0.12);
-      color: #c4b5fd;
-      border: 1px solid rgba(139,92,246,0.2);
-    }
-    .case-card[data-accent="amber"] .case-metric {
-      background: rgba(245,158,11,0.12);
-      color: #fcd34d;
-      border: 1px solid rgba(245,158,11,0.2);
-    }
-
-    .case-animation {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      background: rgba(0,0,0,0.4);
-      min-height: 280px;
-    }
-
-    .case-description {
-      padding: 1.5rem 2rem;
-    }
-
-    .case-description p {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 0.75rem;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-    }
-
-    .case-description strong {
-      color: rgba(255,255,255,0.9);
-      font-weight: 500;
-    }
-
-    .case-keywords {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      padding-top: 0.5rem;
-    }
-
-    .case-keyword {
-      font-size: 0.6rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 9999px;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-    }
-
-    .case-card[data-accent="blue"] .case-keyword {
-      background: rgba(59,130,246,0.1);
-      color: #3b82f6;
-    }
-    .case-card[data-accent="emerald"] .case-keyword {
-      background: rgba(16,185,129,0.1);
-      color: #10b981;
-    }
-    .case-card[data-accent="violet"] .case-keyword {
-      background: rgba(139,92,246,0.1);
-      color: #8b5cf6;
-    }
-    .case-card[data-accent="amber"] .case-keyword {
-      background: rgba(245,158,11,0.1);
-      color: #f59e0b;
-    }
-
-    /* ─── SCROLL REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── TERMINAL ANIMATION ─── */
-    .terminal-container {
-      background: #080808;
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      font-family: 'Monaco', 'Menlo', monospace;
-      font-size: 0.75rem;
-      line-height: 1.7;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .terminal-line.muted { color: #555; }
-    .terminal-line.error { color: #f87171; }
-    .terminal-line.warning { color: #fbbf24; }
-    .terminal-line.success { color: #34d399; }
-
-    /* ─── SUBTITLE ANIMATION ─── */
-    .subtitle-container { min-height: 220px; }
-
-    .subtitle-box {
-      padding: 1rem;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      opacity: 0;
-    }
-
-    .subtitle-box.before {
-      background: rgba(127,29,29,0.2);
-      border: 1px solid rgba(127,29,29,0.3);
-      animation: fadeIn 0.5s ease 0.2s forwards;
-    }
-
-    .subtitle-box.after {
-      background: rgba(6,78,59,0.2);
-      border: 1px solid rgba(6,78,59,0.3);
-      animation: fadeIn 0.5s ease 1s forwards;
-    }
-
-    .subtitle-label {
-      font-size: 0.625rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle-box.before .subtitle-label { color: #f87171; }
-    .subtitle-box.after .subtitle-label { color: #34d399; }
-
-    .subtitle-text {
-      font-size: 0.875rem;
-      font-style: italic;
-      color: #cbd5e1;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle-error {
-      background: rgba(239,68,68,0.3);
-      padding: 0.125rem 0.25rem;
-      border-radius: 0.25rem;
-      text-decoration: line-through;
-    }
-
-    .subtitle-fix {
-      background: rgba(16,185,129,0.2);
-      padding: 0.125rem 0.25rem;
-      border-radius: 0.25rem;
-    }
-
-    .subtitle-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-    .subtitle-tag {
-      font-size: 0.625rem;
-      padding: 0.125rem 0.5rem;
-      border-radius: 9999px;
-    }
-
-    .subtitle-tag.error { background: rgba(127,29,29,0.4); color: #fca5a5; }
-    .subtitle-tag.success { background: rgba(6,78,59,0.4); color: #6ee7b7; }
-
-    .subtitle-arrow { display: flex; justify-content: center; margin: 0.5rem 0; }
-
-    .subtitle-arrow-line {
-      width: 1px;
-      height: 2rem;
-      background: #3b82f6;
-      opacity: 0;
-      animation: growLine 0.3s ease 0.8s forwards;
-    }
-
-    /* ─── CHATBOT ANIMATION ─── */
-    .chatbot-container {
-      background: #080808;
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      min-height: 220px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .chatbot-header {
-      font-size: 0.625rem;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.75rem;
-    }
-
-    .chat-message {
-      display: flex;
-      margin-bottom: 0.75rem;
-      opacity: 0;
-      animation: slideInMessage 0.3s ease forwards;
-    }
-
-    .chat-message.user { justify-content: flex-end; }
-    .chat-message.bot { justify-content: flex-start; }
-
-    .chat-bubble {
-      max-width: 80%;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.75rem;
-      font-size: 0.75rem;
-    }
-
-    .chat-bubble.user { background: #3b82f6; color: white; }
-    .chat-bubble.bot { background: #151515; color: #e2e8f0; }
-    .chat-bubble.bot-options { background: #151515; border: 1px solid #2a2a2a; }
-
-    .chatbot-stats {
-      font-size: 0.625rem;
-      color: #3b82f6;
-      text-align: center;
-      margin-top: 0.5rem;
-      opacity: 0;
-      animation: fadeIn 0.5s ease 6s forwards;
-    }
-
-    /* ─── TAXONOMY ANIMATION ─── */
-    .taxonomy-container {
-      position: relative;
-      width: 100%;
-      height: 16rem;
-      overflow: hidden;
-    }
-
-    @media (min-width: 768px) { .taxonomy-container { height: 18rem; } }
-
-    .taxonomy-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .taxonomy-line {
-      stroke: #3b82f6;
-      stroke-width: 1;
-      stroke-opacity: 0.3;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-    }
-
-    .taxonomy-line.animate {
-      animation: slideLine 1s ease forwards;
-    }
-
-    .taxonomy-node {
-      position: absolute;
-      transform: translateX(-50%);
-      font-size: 0.625rem;
-      font-weight: 500;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.5rem;
-      opacity: 0;
-      animation: popIn 0.4s ease forwards;
-      white-space: nowrap;
-    }
-
-    .taxonomy-node.root { background: #3b82f6; color: white; }
-    .taxonomy-node.category { background: #111; border: 1px solid #2a2a2a; color: #ccc; }
-    .taxonomy-node.leaf { background: #0a0a0a; border: 1px solid #1a1a1a; color: #999; }
-
-    .taxonomy-demo {
-      position: absolute;
-      bottom: 0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #080808;
-      border: 1px solid #1f1f1f;
-      border-radius: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      color: #aaa;
-      opacity: 0;
-      animation: fadeInUp 0.5s ease 2s forwards;
-    }
-
-    /* ─── DATA ENTRY ANIMATION ─── */
-    .dataentry-container {
-      background: #080808;
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      border: 1px solid rgba(245,158,11,0.12);
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .de-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding-bottom: 0.6rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .de-title {
-      font-size: 0.625rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #555;
-    }
-
-    .de-wpm-badge {
-      font-size: 0.65rem;
-      background: rgba(245,158,11,0.15);
-      color: #f59e0b;
-      border: 1px solid rgba(245,158,11,0.25);
-      padding: 0.15rem 0.6rem;
-      border-radius: 9999px;
-      font-weight: 500;
-    }
-
-    .de-row {
-      display: grid;
-      grid-template-columns: 2fr 1.5fr 1.5fr 0.8fr;
-      gap: 0.5rem;
-      align-items: center;
-      padding: 0.4rem 0.5rem;
-      border-radius: 0.4rem;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.3s, transform 0.3s;
-      font-size: 0.72rem;
-    }
-
-    .de-row.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .de-row:nth-child(odd) { background: rgba(255,255,255,0.025); }
-    .de-row .de-cell { color: #aaa; font-family: 'Monaco', monospace; font-size: 0.68rem; }
-    .de-row .de-cell.highlight { color: #f59e0b; }
-
-    .de-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-size: 0.65rem;
-      padding: 0.1rem 0.45rem;
-      border-radius: 9999px;
-    }
-
-    .de-status.verified {
-      background: rgba(16,185,129,0.12);
-      color: #10b981;
-    }
-
-    .de-status.flagged {
-      background: rgba(239,68,68,0.12);
-      color: #f87171;
-    }
-
-    .de-stats-bar {
-      display: flex;
-      gap: 1rem;
-      padding-top: 0.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: auto;
-      opacity: 0;
-      animation: fadeIn 0.5s ease 3s forwards;
-    }
-
-    .de-stat-item {
-      font-size: 0.65rem;
-      color: rgba(245,158,11,0.8);
-    }
-
-    /* ─── KEYFRAMES ─── */
-    @keyframes growLine {
-      from { transform: scaleY(0); opacity: 0; }
-      to { transform: scaleY(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideInMessage {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideLine {
-      from { stroke-dashoffset: 1000; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0) translateX(-50%); }
-      to { opacity: 1; transform: scale(1) translateX(-50%); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #050505;
-      padding: 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .footer-content {
-      font-size: 0.75rem;
-      color: #444;
-    }
-
-    /* ─── MOBILE ─── */
-    @media (max-width: 900px) {
-      .navbar-left {
-        display: none;
-      }
-
-      .main-content {
-        margin-left: 0;
-      }
-
-      .hero-title { font-size: 48px; line-height: 56px; letter-spacing: -1px; }
-      .cases-title { font-size: 32px; line-height: 42px; }
-      .data-quote { font-size: 18px; line-height: 28px; }
-      .bridge-section { padding: 2rem 1.5rem; }
-      .bridge-number { font-size: 32px; }
-
-      .nav-compact { max-width: 90vw; }
-
-      .cases-section { padding: 4rem 1rem; }
-      .case-animation { padding: 1rem; }
-      .case-header { padding: 1rem; }
-      .case-description { padding: 1rem; }
-
-      .de-row { grid-template-columns: 1fr 1fr; }
-      .de-row .de-cell:nth-child(3) { display: none; }
-    }
-  </style>
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  max-width: 100rem;
+  height: 18rem;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+ display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_logo-wrap::before {
+  content: "Ariane Lesnyak.";
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 11vw, 10rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  -webkit-background-clip: text;
+  background-clip: text;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+  position: relative;
+  z-index: 3;   /* fica acima do .footer_logo-fill-wrap, então o blur aparece por trás */
+}
+
+/* Camada de preenchimento que segue o mouse */
+.footer_logo-fill-wrap {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Círculo com blur que acompanha o cursor */
+.footer_logo-fill-circ {
+  opacity: 0;
+  filter: blur(50px);
+  background-color: #b6b6b6;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -150px;
+  left: -200px;
+  transition: opacity .6s ease-in-out;
+  transform: translate(var(--pointer-x, 0px), var(--pointer-y, 0px)) translateZ(0);
+}
+
+/* Quando o ponteiro está sobre o footer, revela o círculo */
+.footer.pointer-active .footer_logo-fill-circ {
+  opacity: 0.9;
+}
+
+/* Inner circles (apenas para manter a profundidade visual do original) */
+.footer_logo-fill-circ-2 {
+  background-color: #707070;
+  border-radius: 50%;
+  width: 70%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer_logo-fill-circ-3 {
+  background-color: #9c9c9c;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+}
+
+/* Máscara via SVG do logo — aplicada quando o footer está em hover
+   (adapta o comportamento do site micro1: o círculo "pinta" o logo) */
+@media screen and (min-width: 992px) {
+  .footer.pointer-active .footer_logo-fill-wrap {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* =====================================================
+   REVEAL
+   ===================================================== */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .8s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 900px) {
+  .navbar { grid-template-columns: auto 1fr auto; padding: 1rem 1.25rem; }
+  .navbar.scrolled { padding: 0.55rem 1rem; }
+  .nav-links { gap: 0.25rem; }
+  .nav-links a { font-size: 12px; }
+  .nav-logo { font-size: 1.1rem; }
+  .nav-cta .cta-label { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
+  .hero-title { font-size: 2.5rem; }
+  .hero { padding-top: 18vh; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-left { position: static; }
+  .about-image { position: absolute; opacity: 0.15; }
+  .about-right { padding-top: 1rem; gap: 5rem; }
+  .about-title { font-size: 2rem; }
+
+  .manifesto-quote { font-size: 1.05rem; }
+  .h_l_wrap { padding: 3rem 1.25rem; }
+
+  .cases { padding: 4rem 1rem; }
+  .cases-title { font-size: 2rem; }
+  .case-title { font-size: 1.6rem; }
+  .case-cols { grid-template-columns: 1fr; }
+  .case-icon { width: 1.6rem; height: 1.6rem; }
+
+  .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; padding: 3rem 1.5rem 0; }
+  .footer { padding-bottom: 12rem; }
+  .footer_logo-wrap { height: 12rem; }
+
+  .speech-rows, .av-fields { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 2rem; }
+  .about-title { font-size: 1.6rem; }
+  .metric-title { font-size: 1.35rem; }
+}
+</style>
 </head>
 <body>
 
-  <!-- ─── LEFT SIDEBAR NAVBAR ─── -->
-  <nav class="navbar-left" id="navbarLeft">
-    <a href="#" class="nav-logo">ariane lesnyak.</a>
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  
 
-    <div class="nav-links">
-      <a href="#about">About me</a>
-      <a href="#cases">Case studies</a>
+  <a href="#" class="nav-logo" id="navLogo">Ariane Lesnyak.</a>
+
+  
+<div class="nav-links">
+    <a href="#about">About me</a>
+    <a href="#cases">Case studies</a>
+  </div>
+<a href="#contact" class="nav-cta" id="navCta">
+    <span class="cta-label">Get in touch</span>
+    <span class="cta-square">
+      <span class="cta-chevron">
+        <svg viewBox="0 0 24 24" fill="none" stroke="url(#chevGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <defs>
+            <linearGradient id="chevGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#c4b5fd"/>
+              <stop offset="50%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </span>
+    </span>
+  </a>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-wave" id="heroWave" aria-hidden="true"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Speech &amp; audio<br>evaluated with evidence.</h1>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT — título/subtítulo fixos + métricas scrollando
+     ============================================================ -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-image"></div>
+      <h2 class="about-title">Portuguese Bilingual Expert · Brazil</h2>
+      <p class="about-subtitle">
+        Native Brazilian Portuguese linguist with 10+ years in audiovisual
+        transcription, speech evaluation, and linguistic QA. Nativeness, fluency,
+        pronunciation and prosody — judged against clear rubrics, documented in English.
+      </p>
     </div>
 
-    <div class="nav-bottom">
-      <a href="#contact" class="get-in-touch">Get in touch</a>
-    </div>
-  </nav>
+    <div class="about-right">
+      <!-- Metric 1 -->
+      <div class="metric-item" data-metric="1">
+        <div class="metric-title">
+          1,000+ hours transcribed
+          <span class="chev">›</span>
+        </div>
+        <p class="metric-desc">
+          Audiovisual transcription across educational, corporate and institutional
+          material — PT, EN and FR — with consistent terminology and accurate
+          speaker attribution. The foundation for reliable speech evaluation.
+        </p>
+        <div class="metric-image">
+          <span>IMG placeholder · waveform + transcript overlay</span>
+          <span class="ph-label">sugestão: screenshot de transcript + timeline</span>
+        </div>
+      </div>
 
-  <!-- ─── COMPACT NAV (scroll) ─── -->
-  <div class="nav-compact" id="compactNav">
-    <div class="nav-scroll-menu">
-      <span class="compact-logo">a.</span>
-      <a href="#about">about me</a>
-      <a href="#cases">case studies</a>
-      <a href="#contact" class="compact-cta">get in touch</a>
+      <!-- Metric 2 -->
+      <div class="metric-item" data-metric="2">
+        <div class="metric-title">
+          IPA · NURC-SP annotation
+          <span class="chev">›</span>
+        </div>
+        <p class="metric-desc">
+          Phonetic annotation of Brazilian Portuguese speech using the International
+          Phonetic Alphabet — marking nasal vowels, rhotic variation, and vowel
+          reduction. Supports nativeness judgments that separate real deviations
+          from legitimate regional features.
+        </p>
+        <div class="metric-image">
+          <span>IMG placeholder · waveform + IPA overlay</span>
+          <span class="ph-label">sugestão: waveform com anotações IPA coloridas</span>
+        </div>
+      </div>
+
+      <!-- Metric 3 -->
+      <div class="metric-item" data-metric="3">
+        <div class="metric-title">
+          10+ years of experience
+          <span class="chev">›</span>
+        </div>
+        <p class="metric-desc">
+          Translation, localization, transcription, LQA, and audiovisual QA — with
+          formal training in Phonetics, Morphology and Syntax from the University
+          of São Paulo (USP).
+        </p>
+        <div class="metric-image">
+          <span>IMG placeholder · studio / desk / audio setup</span>
+          <span class="ph-label">sugestão: close de fones + caderno com anotações</span>
+        </div>
+      </div>
+
+      <!-- Metric 4 -->
+      <div class="metric-item" data-metric="4">
+        <div class="metric-title">
+          C1–C2 English proficiency
+          <span class="chev">›</span>
+        </div>
+        <p class="metric-desc">
+          Written and spoken English sufficient for structured justifications,
+          calibration sessions, and documentation intended for engineering
+          teams — clear, concise, and consistent.
+        </p>
+        <div class="metric-image">
+          <span>IMG placeholder · handwritten English + PT notes side by side</span>
+          <span class="ph-label">sugestão: doc bilíngue (EN justificativa + PT evidência)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MANIFESTO — h_l_main com borda gradiente + noise + blur
+     ============================================================ -->
+<section class="manifesto">
+  <div class="h_l_main">
+    <div class="h_l_inner">
+      <div class="h_l_overlay"></div>
+      <div class="h_l_wrap">
+        <img
+          class="h_l_img"
+          src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a1721ed070156fbb2676424_6a05c67a478d77009ec4ec81_Rectangle%20828797%20(1).webp"
+          alt=""
+          loading="lazy"
+        >
+        <div class="manifesto-inner">
+          <p class="manifesto-quote">
+            Nativeness, fluency, pronunciation and prosody — judged with structured
+            rubrics and observable evidence, documented in English for downstream
+            AI training.
+          </p>
+          <div class="manifesto-meta">Speech &amp; audio evaluation · Linguistic QA · PT-BR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASES
+     ============================================================ -->
+<section class="cases" id="cases">
+  <div class="cases-header">
+    <h2 class="cases-title">Case Studies</h2>
+    <p class="cases-subtitle">Speech evaluation · AI output auditing · Phonetic transcription · Audiovisual annotation</p>
+  </div>
+
+  <div class="cases-list">
+
+    <!-- CASE 1 -->
+    <article class="case reveal">
+      <div class="case-top">
+        <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+        <div>
+          <h3 class="case-title">PT-BR Speech Nativeness &amp; Fluency Evaluation</h3>
+          <p class="case-summary">Six-dimension rubric — nativeness, fluency, pronunciation, intonation, rhythm, clarity — with evidence-based justifications in English and explicit handling of regional variation.</p>
+        </div>
+      </div>
+
+      <div class="case-anim">
+        <div class="speech-container">
+          <div class="speech-wave" id="speechWave"></div>
+          <div class="speech-rows">
+            <div class="speech-row"><span class="speech-dim">Nativeness</span><span class="speech-score native">3 · Native-like</span></div>
+            <div class="speech-row"><span class="speech-dim">Fluency</span><span class="speech-score native">3 · Native-like</span></div>
+            <div class="speech-row"><span class="speech-dim">Pronunciation</span><span class="speech-score native">3 · Native-like</span></div>
+            <div class="speech-row"><span class="speech-dim">Intonation / prosody</span><span class="speech-score dev">2 · Deviation</span></div>
+            <div class="speech-row"><span class="speech-dim">Rhythm &amp; pausing</span><span class="speech-score native">3 · Native-like</span></div>
+            <div class="speech-row"><span class="speech-dim">Clarity &amp; context</span><span class="speech-score native">3 · Native-like</span></div>
+          </div>
+          <div class="speech-play">
+            <button class="speech-play-btn" onclick="speechPlay(this)" aria-label="Play sample">▶</button>
+            <span>Toggle waveform · 5/6 native-like · 1 localized prosody deviation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>Evaluating nativeness, fluency, pronunciation and prosody in PT-BR speech requires consistent, evidence-based judgment — not impressions.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Solution</div>
+          <p>Six-dimension rubric with three levels per dimension, evidence-based justifications in English, and clear rules for inconclusive cases.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Outcome</div>
+          <p>Calibrated, repeatable judgments that scale to reviewer teams and model-output comparisons.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 2 -->
+    <article class="case reveal">
+      <div class="case-top">
+        <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+          <path d="M7 3v18"></path><path d="M17 3v18"></path>
+          <path d="M3 9h18"></path><path d="M3 15h18"></path>
+        </svg>
+        <div>
+          <h3 class="case-title">AI-Generated Subtitle Evaluation</h3>
+          <p class="case-summary">Syntactic and semantic auditing to detect hallucinations, contradictory attributes, and broken reference chains — with severity levels and English-language justifications.</p>
+        </div>
+      </div>
+
+      <div class="case-anim">
+        <div class="typing-container">
+          <div class="typing-label">AI output · auditing</div>
+          <div class="typing-line" id="typingLine"></div>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>AI-generated subtitles can be fluent yet logically broken — invented facts, contradictory attributes, inconsistent references that pass surface QA.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Solution</div>
+          <p>Clause-level syntactic and semantic analysis to flag hallucinations and unverifiable claims, with severity levels and English justifications.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Outcome</div>
+          <p>Caught 92% of hallucinated references in a 500-subtitle pilot; the audit checklist was adopted as a pre-publication gate.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="case reveal">
+      <div class="case-top">
+        <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V5l12-2v13"></path>
+          <circle cx="6" cy="18" r="3"></circle>
+          <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <div>
+          <h3 class="case-title">PT-BR Audio Transcription &amp; IPA Assessment</h3>
+          <p class="case-summary">Orthographic and IPA transcription with phonetic notes — marking native reductions, regional rhotics and nasal vowels, and separating real deviations from legitimate variation.</p>
+        </div>
+      </div>
+
+      <div class="case-anim">
+        <div class="ipa-container" id="ipaAnim">
+          <div class="ipa-line" data-line="0">
+            <span class="ipa-label">ORTH</span>
+            <span class="ipa-orth">"Bom, eu tava pensando em ir na reunião mais cedo…"</span>
+          </div>
+          <div class="ipa-line" data-line="1">
+            <span class="ipa-label">IPA</span>
+            <span class="ipa-phon">[ˈbõj̃, ew <span class="mark">ˈtavɐ</span> pẽˈsɐ̃du ĩj̃ iɾ nɐ <span class="mark">ʁeũˈnjɐ̃w̃</span> majs ˈsedu…]</span>
+          </div>
+          <div class="ipa-line" data-line="2">
+            <span class="ipa-label">NOTE</span>
+            <span class="ipa-phon"><span class="mark">ˈtavɐ</span> — colloquial reduction of <em>estava</em>; native marker, not an error.</span>
+          </div>
+          <div class="ipa-line" data-line="3">
+            <span class="ipa-label">NOTE</span>
+            <span class="ipa-phon"><span class="mark">[ʁ]</span> — São Paulo rhotic; consistent with the target variety.</span>
+          </div>
+          <div class="ipa-line" data-line="4">
+            <span class="ipa-label">NOTE</span>
+            <span class="ipa-phon"><span class="mark">[ɐ̃]</span> — nasal vowel realized naturally; no substitution affecting meaning.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>Reliable speech evaluation depends on accurate transcription and phonetic annotation — without them, nativeness judgments become impressions.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Solution</div>
+          <p>Orthographic + IPA annotation, marking native reductions, regional rhotics and nasal vowels, with short English notes distinguishing native features from real deviations.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Outcome</div>
+          <p>Transcription + IPA evidence supporting consistent scoring of pronunciation and nativeness — same protocol used for NURC-SP annotation.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 4 -->
+    <article class="case reveal">
+      <div class="case-top">
+        <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+          <path d="M8 21h8"></path><path d="M12 17v4"></path>
+          <polygon points="10 8 16 11 10 14 10 8" fill="currentColor" stroke="none"></polygon>
+        </svg>
+        <div>
+          <h3 class="case-title">Audiovisual Semantic Annotation</h3>
+          <p class="case-summary">Multimodal labels across actor, character, action, intention, speech and emotion — with contextual judgment and clear boundaries between observation and inference.</p>
+        </div>
+      </div>
+
+      <div class="case-anim">
+        <div class="av-container" id="avAnim">
+          <div class="av-header">
+            <span>Annotated segment · illustrative</span>
+            <span class="av-tc">00:10:14 → 00:10:20</span>
+          </div>
+          <div class="av-fields">
+            <div class="av-field"><span class="av-field-label">Actor</span><span class="av-field-value">Joe Doe</span></div>
+            <div class="av-field"><span class="av-field-label">Character</span><span class="av-field-value">John</span></div>
+            <div class="av-field"><span class="av-field-label">Action</span><span class="av-field-value">knocks on door</span></div>
+            <div class="av-field"><span class="av-field-label">Intention</span><span class="av-field-value amber">seeks entry</span></div>
+            <div class="av-field"><span class="av-field-label">Speech</span><span class="av-field-value">"Why do you speak to me like this?"</span></div>
+            <div class="av-field"><span class="av-field-label">Emotion</span><span class="av-field-value amber">angry</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>Turning unstructured audiovisual material into structured semantic labels requires contextual judgment and clear boundaries between observation and interpretation.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Solution</div>
+          <p>Manual interpretation of video content with labels across six semantic dimensions, explicit annotation guidelines, and documented criteria for ambiguous cases.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Outcome</div>
+          <p>Consistent semantic labeling supporting downstream AI training data — with a clear rule for withholding labels when evidence is insufficient.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — com footer_logo-wrap + pointer effect
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Ariane Lesnyak</h4>
+      <ul>
+        <li>Portuguese Bilingual Expert · Brazil</li>
+        <li>Native PT-BR · C1–C2 English</li>
+        <li>Remote · Global</li>
+      </ul>
+    </div>
+
+    <div class="footer-center">
+      <div class="footer-center-logo">Ariane Lesnyak.</div>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/arianelesnyak" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.25 2.37 4.25 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="#" aria-label="CV">
+          <!-- Ícone de documento branco (SVG), mesmo tamanho do LinkedIn -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="8" y1="13" x2="16" y2="13"></line>
+            <line x1="8" y1="17" x2="16" y2="17"></line>
+            <line x1="8" y1="9" x2="10" y2="9"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col" style="text-align: right;">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:ariane.etimo@gmail.com">ariane.etimo@gmail.com</a></li>        
+      </ul>
     </div>
   </div>
 
-  <!-- ─── MAIN CONTENT ─── -->
-  <div class="main-content">
-
-    <!-- HERO -->
-    <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="./video2.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 class="hero-title">Data Entry Keyer</h1>
-      </div>
-    </section>
-
-    <!-- ─── BLACK BRIDGE SECTION ─── -->
-    <section class="bridge-section">
-      <div class="bridge-inner">
-        <div class="bridge-stat">
-          <div class="bridge-number">75+</div>
-          <div class="bridge-label">WPM typing speed</div>
-        </div>
-        <div class="bridge-divider"></div>
-        <div class="bridge-stat">
-          <div class="bridge-number">98%</div>
-          <div class="bridge-label">data accuracy rate</div>
-        </div>
-        <div class="bridge-divider"></div>
-        <div class="bridge-stat">
-          <div class="bridge-number">10+</div>
-          <div class="bridge-label">years of experience</div>
-        </div>
-        <div class="bridge-divider"></div>
-        <div class="bridge-stat">
-          <div class="bridge-number">2,700</div>
-          <div class="bridge-label">terms structured</div>
+  <!-- footer_logo-wrap (adaptado do site micro1) -->
+  <div class="footer_logo-wrap" id="footerLogoWrap">
+    <div class="footer_logo-fill-wrap" id="footerFillWrap">
+      <div class="footer_logo-fill-circ" id="footerFillCirc">
+        <div class="footer_logo-fill-circ-2">
+          <div class="footer_logo-fill-circ-3"></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</footer>
 
-    <!-- DATA SECTION (scroll-triggered text) -->
-    <section class="data-section" id="about">
-      <div class="data-bg"></div>
-      <div class="data-content">
-        <div class="data-quote visible" id="quote1">
-          High accuracy data processing across AI pipelines
-        </div>
-        <div class="data-quote hidden" id="quote2">
-          <span class="data-metric-highlight" style="font-size:16px;">75+ WPM</span> · <span class="data-metric-highlight" style="font-size:16px;">98% accuracy</span> · <span class="data-metric-highlight" style="font-size:16px;">100K+ records processed</span><br>
-          <span class="data-metric-highlight" style="font-size:16px;">2,700-term taxonomy built from 2M+ monthly interactions:</span><br>
-          structured data, zero-error workflows, AI-ready documentation
-        </div>
-      </div>
-    </section>
+<script>
+/* =============================================================
+   HERO WAVEFORM
+   ============================================================= */
+(function buildHeroWave() {
+  const wave = document.getElementById('heroWave');
+  if (!wave) return;
+  const count = Math.max(40, Math.floor(window.innerWidth / 22));
+  for (let i = 0; i < count; i++) {
+    const bar = document.createElement('span');
+    const h = 12 + Math.abs(Math.sin(i * 0.45)) * 55 + Math.random() * 25;
+    bar.style.height = h + '%';
+    bar.style.animationDelay = (i * 0.05) + 's';
+    wave.appendChild(bar);
+  }
+})();
 
-    <!-- ─── CASE STUDIES ─── -->
-    <section class="cases-section" id="cases">
-      <div class="cases-header reveal">
-        <h2 class="cases-title">Case Studies</h2>
-        <p class="cases-subtitle">Data accuracy · Record management · AI content validation · Workflow optimization</p>
-      </div>
+/* =============================================================
+   NAVBAR SCROLL STATE
+   ============================================================= */
+const navbar = document.getElementById('navbar');
+const navLogo = document.getElementById('navLogo');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 160) {
+    navbar.classList.add('scrolled');
+    navLogo.textContent = 'a.';
+  } else {
+    navbar.classList.remove('scrolled');
+    navLogo.textContent = 'Ariane Lesnyak.';
+  }
+});
 
-      <div class="cases-container">
+/* =============================================================
+   ABOUT — sticky + metric reveal
+   ============================================================= */
+const metricObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll('.metric-item').forEach(el => metricObserver.observe(el));
 
-        <!-- CASE 1: UI String Localization — DATA ENTRY aligned (MOST ALIGNED) -->
-        <div class="case-card reveal" data-accent="amber">
-          <div class="case-header">
-            <div class="case-header-top">
-              <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-              <h3 class="case-title">High-Volume Data Entry & Record Standardization</h3>
-            </div>
-            <div class="case-metrics">
-              <span class="case-metric">100K+ strings processed</span>
-              <span class="case-metric">75+ WPM</span>
-              <span class="case-metric">85% error reduction</span>
-              <span class="case-metric">45% QA time saved</span>
-            </div>
-          </div>
-          <div class="case-animation">
-            <div class="dataentry-container" id="dataentry-animation">
-              <div class="de-header">
-                <span class="de-title">Record Entry · Live QA Workflow</span>
-                <span class="de-wpm-badge">75+ WPM · 98% accuracy</span>
-              </div>
+/* =============================================================
+   GENERAL REVEAL
+   ============================================================= */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-              <div class="de-row" id="de-row-0">
-                <div class="de-cell highlight">UI_STRING_146_PT</div>
-                <div class="de-cell">Configurações &gt; Exportar</div>
-                <div class="de-cell">Tag: {1}{2}{3}{4}</div>
-                <div class="de-status verified">✓ OK</div>
-              </div>
+/* =============================================================
+   CASE 1 — speech waveform
+   ============================================================= */
+(function initSpeechWave() {
+  const wave = document.getElementById('speechWave');
+  if (!wave) return;
+  for (let i = 0; i < 60; i++) {
+    const bar = document.createElement('span');
+    bar.style.height = (20 + Math.abs(Math.sin(i * 0.55)) * 70 + Math.random() * 25) + '%';
+    wave.appendChild(bar);
+  }
+})();
+function speechPlay(btn) {
+  const container = btn.closest('.speech-container');
+  const wave = container.querySelector('.speech-wave');
+  const playing = wave.classList.toggle('playing');
+  btn.textContent = playing ? '❚❚' : '▶';
+  if (playing) {
+    setTimeout(() => {
+      if (wave.classList.contains('playing')) {
+        wave.classList.remove('playing');
+        btn.textContent = '▶';
+      }
+    }, 6000);
+  }
+}
 
-              <div class="de-row" id="de-row-1">
-                <div class="de-cell highlight">UI_STRING_179_PT</div>
-                <div class="de-cell">Redefinir senha</div>
-                <div class="de-cell">Tag mismatch &lt;/179&gt;</div>
-                <div class="de-status flagged">⚠ Flag</div>
-              </div>
+/* =============================================================
+   CASE 2 — TYPING LOOP
+   ============================================================= */
+(function typingLoop() {
+  const line = document.getElementById('typingLine');
+  if (!line) return;
 
-              <div class="de-row" id="de-row-2">
-                <div class="de-cell highlight">GLOSSARY_TERM_04</div>
-                <div class="de-cell">Reembolso / Refund</div>
-                <div class="de-cell">Style: CDC Art.49</div>
-                <div class="de-status verified">✓ OK</div>
-              </div>
+  const wrongText = 'She arrived at the [Eiffel Tower in Berlin] just before the [midnight sunset], carrying the [blue red umbrella].';
+  const rightText = 'She arrived at the Eiffel Tower in Paris just before dusk, carrying the blue umbrella.';
 
-              <div class="de-row" id="de-row-3">
-                <div class="de-cell highlight">TAXONOMY_NODE_2145</div>
-                <div class="de-cell">Instabilidade WiFi</div>
-                <div class="de-cell">Parent: Conectividade</div>
-                <div class="de-status verified">✓ OK</div>
-              </div>
-
-              <div class="de-row" id="de-row-4">
-                <div class="de-cell highlight">UI_STRING_180_PT</div>
-                <div class="de-cell">Suporte ao cliente</div>
-                <div class="de-cell">Placeholder inverted</div>
-                <div class="de-status flagged">⚠ Flag</div>
-              </div>
-
-              <div class="de-stats-bar">
-                <span class="de-stat-item">✓ Records: 98,342 verified</span>
-                <span class="de-stat-item">⚠ Flagged: 1,658 (1.7%)</span>
-                <span class="de-stat-item">⚡ 85% fewer errors vs. baseline</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-description">
-            <p><strong>Problem:</strong> Mismatched placeholders and broken HTML tags across 12 language variants causing rendering bugs in production systems.</p>
-            <p><strong>Solution:</strong> Entered, verified, and standardized 100K+ UI strings at 75+ WPM with zero-tolerance accuracy protocols, normalized tag patterns, created style guides, implemented automated QA checks.</p>
-            <p><strong>Outcome:</strong> 85% tag error reduction, 60% consistency increase, 45% QA time saved. Full compliance with data privacy standards across all records.</p>
-            <div class="case-keywords">
-              <span class="case-keyword">High-Volume Entry</span>
-              <span class="case-keyword">Record Standardization</span>
-              <span class="case-keyword">QA Workflows</span>
-              <span class="case-keyword">Data Integrity</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CASE 2: Taxonomy (MOST ALIGNED - structured data & records) -->
-        <div class="case-card reveal" data-accent="blue">
-          <div class="case-header">
-            <div class="case-header-top">
-              <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-              <h3 class="case-title">Enterprise Database Taxonomy & Structured Records</h3>
-            </div>
-            <div class="case-metrics">
-              <span class="case-metric">2,700+ terms</span>
-              <span class="case-metric">67% fewer zero-results</span>
-              <span class="case-metric">ISO 25964</span>
-              <span class="case-metric">2M+ interactions sourced</span>
-            </div>
-          </div>
-          <div class="case-animation">
-            <div class="taxonomy-container" id="taxonomy-animation">
-              <svg class="taxonomy-svg">
-                <line class="taxonomy-line" x1="50%" y1="12%" x2="20%" y2="37%" />
-                <line class="taxonomy-line" x1="50%" y1="12%" x2="50%" y2="37%" />
-                <line class="taxonomy-line" x1="50%" y1="12%" x2="80%" y2="37%" />
-                <line class="taxonomy-line" x1="20%" y1="37%" x2="8%" y2="62%" />
-                <line class="taxonomy-line" x1="20%" y1="37%" x2="32%" y2="62%" />
-                <line class="taxonomy-line" x1="50%" y1="37%" x2="44%" y2="62%" />
-                <line class="taxonomy-line" x1="50%" y1="37%" x2="58%" y2="62%" />
-                <line class="taxonomy-line" x1="80%" y1="37%" x2="72%" y2="62%" />
-                <line class="taxonomy-line" x1="80%" y1="37%" x2="90%" y2="62%" />
-              </svg>
-              <div class="taxonomy-node root" style="left: 50%; top: 8%;">Telecom Issues</div>
-              <div class="taxonomy-node category" style="left: 20%; top: 33%;">Connectivity</div>
-              <div class="taxonomy-node category" style="left: 50%; top: 33%;">Billing</div>
-              <div class="taxonomy-node category" style="left: 80%; top: 33%;">Hardware</div>
-              <div class="taxonomy-node leaf" style="left: 8%; top: 58%;">Internet dropping</div>
-              <div class="taxonomy-node leaf" style="left: 32%; top: 58%;">WiFi instability</div>
-              <div class="taxonomy-node leaf" style="left: 44%; top: 58%;">Overcharge</div>
-              <div class="taxonomy-node leaf" style="left: 58%; top: 58%;">Refund</div>
-              <div class="taxonomy-node leaf" style="left: 72%; top: 58%;">Router reset</div>
-              <div class="taxonomy-node leaf" style="left: 90%; top: 58%;">Device swap</div>
-              <div class="taxonomy-demo">
-                <span>Search: </span>
-                <span>"internet dropping"</span>
-                <span> → Connectivity → WiFi instability ✓ 67% fewer zero-results</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-description">
-            <p><strong>Problem:</strong> 30,000+ agents faced zero-result database searches due to semantic gaps between customer language and corporate terminology.</p>
-            <p><strong>Solution:</strong> Built and organized a 2,700+ term structured database following ISO 25964 standards, sourced from analytics of 2M+ monthly interactions. Documented, categorized, and maintained all records with cross-reference integrity.</p>
-            <p><strong>Outcome:</strong> 67% fewer zero-results, 18% faster resolution, 61% faster information retrieval. Records used for AI training data pipelines.</p>
-            <div class="case-keywords">
-              <span class="case-keyword">Database Structuring</span>
-              <span class="case-keyword">Record Management</span>
-              <span class="case-keyword">ISO 25964</span>
-              <span class="case-keyword">AI Data Pipeline</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CASE 3: MTPE / Subtitle QA (hallucination = data inconsistency detection) -->
-        <div class="case-card reveal" data-accent="emerald">
-          <div class="case-header">
-            <div class="case-header-top">
-              <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
-              <h3 class="case-title">Data Accuracy Review & Discrepancy Flagging</h3>
-            </div>
-            <div class="case-metrics">
-              <span class="case-metric">1M+ records reviewed</span>
-              <span class="case-metric">70% error reduction</span>
-              <span class="case-metric">50% faster reviews</span>
-              <span class="case-metric">95% quality score</span>
-            </div>
-          </div>
-          <div class="case-animation">
-            <div class="subtitle-container">
-              <div class="subtitle-box before">
-                <div class="subtitle-label">Before — Raw AI Output (Inaccurate Record)</div>
-                <p class="subtitle-text">"O cliente pode solicitar reembolso até 90 dias após a compra, conforme <span class="subtitle-error">Lei 12.345/2020</span>."</p>
-                <div class="subtitle-tags">
-                  <span class="subtitle-tag error">⚠ Hallucination / Data Inconsistency</span>
-                </div>
-              </div>
-              <div class="subtitle-arrow">
-                <div class="subtitle-arrow-line"></div>
-              </div>
-              <div class="subtitle-box after">
-                <div class="subtitle-label">After — Verified & Standardized Record</div>
-                <p class="subtitle-text">"O cliente pode solicitar reembolso em até <span class="subtitle-fix">7 dias</span> após a compra, conforme <span class="subtitle-fix">CDC (Art. 49)</span>."</p>
-                <div class="subtitle-tags">
-                  <span class="subtitle-tag success">✓ 70% discrepancy reduction · 95% accuracy</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="case-description">
-            <p><strong>Problem:</strong> 1M+ AI-generated records contained hallucinations (fabricated legal references), factual inconsistencies, and non-compliant data entries requiring systematic review.</p>
-            <p><strong>Solution:</strong> Built accuracy-check pipelines with error taxonomy, developed discrepancy classification system, flagged inconsistencies for resolution following data privacy and security standards.</p>
-            <p><strong>Outcome:</strong> 70% error reduction, 50% faster reviews, 95%+ quality scores. Structured process adopted for ongoing AI data training workflows.</p>
-            <div class="case-keywords">
-              <span class="case-keyword">Accuracy Verification</span>
-              <span class="case-keyword">Discrepancy Flagging</span>
-              <span class="case-keyword">AI Data Training</span>
-              <span class="case-keyword">Data Privacy</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CASE 4: AI Chatbot (workflow optimization) -->
-        <div class="case-card reveal" data-accent="violet">
-          <div class="case-header">
-            <div class="case-header-top">
-              <svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-              <h3 class="case-title">AI Workflow Simulation & Process Optimization</h3>
-            </div>
-            <div class="case-metrics">
-              <span class="case-metric">78% adoption</span>
-              <span class="case-metric">15% AHT reduction</span>
-              <span class="case-metric">30K+ agents</span>
-              <span class="case-metric">61% faster retrieval</span>
-            </div>
-          </div>
-          <div class="case-animation">
-            <div class="chatbot-container" id="chatbot-animation">
-              <div class="chatbot-header">Simulated Workflow · Optimized Data Pipeline</div>
-              <div id="chat-messages"></div>
-              <div class="chatbot-stats" id="chatbot-stats">78% adoption · 15% AHT reduction · 61% faster retrieval</div>
-            </div>
-          </div>
-          <div class="case-description">
-            <p><strong>Problem:</strong> Fragmented knowledge base caused poor AI responses. 30,000+ agents struggled with 15+ minute handling times due to disorganized records and data structures.</p>
-            <p><strong>Solution:</strong> Simulated domain-specific data processing scenarios, restructured content architecture, created collaborative workflows, built prompt repository with standardized tone guidelines.</p>
-            <p><strong>Outcome:</strong> 78% workflow adoption, 15% efficiency increase, 61% faster data retrieval. Processes documented for AI automation systems.</p>
-            <div class="case-keywords">
-              <span class="case-keyword">Workflow Simulation</span>
-              <span class="case-keyword">Process Automation</span>
-              <span class="case-keyword">Knowledge Engineering</span>
-              <span class="case-keyword">Document Management</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-      <div class="footer-content">
-        © 2026 Ariane Lesnyak · Data Entry Keyer · Available for remote contract work
-      </div>
-    </footer>
-
-  </div><!-- end .main-content -->
-
-  <script>
-    // ─── NAVBAR SCROLL BEHAVIOR ───
-    const compactNav = document.getElementById('compactNav');
-    const navbarLeft = document.getElementById('navbarLeft');
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll > 120) {
-        compactNav.classList.add('visible');
-        navbarLeft.classList.add('hide');
+  function typeWrong() {
+    line.innerHTML = '';
+    const span = document.createElement('span');
+    span.className = 'typing-line';
+    line.appendChild(span);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < wrongText.length) {
+        const ch = wrongText.charAt(i);
+        if (wrongText.substr(i).startsWith('[Eiffel Tower in Berlin]')) {
+          const frag = document.createElement('span');
+          frag.className = 'err';
+          frag.textContent = '[Eiffel Tower in Berlin]';
+          span.appendChild(frag);
+          i += '[Eiffel Tower in Berlin]'.length;
+          return;
+        }
+        if (wrongText.substr(i).startsWith('[midnight sunset]')) {
+          const frag = document.createElement('span');
+          frag.className = 'err';
+          frag.textContent = '[midnight sunset]';
+          span.appendChild(frag);
+          i += '[midnight sunset]'.length;
+          return;
+        }
+        if (wrongText.substr(i).startsWith('[blue red umbrella]')) {
+          const frag = document.createElement('span');
+          frag.className = 'err';
+          frag.textContent = '[blue red umbrella]';
+          span.appendChild(frag);
+          i += '[blue red umbrella]'.length;
+          return;
+        }
+        span.appendChild(document.createTextNode(ch));
+        i++;
       } else {
-        compactNav.classList.remove('visible');
-        navbarLeft.classList.remove('hide');
+        clearInterval(interval);
+        setTimeout(typeRight, 1500);
+      }
+    }, 18);
+  }
+  function typeRight() {
+    line.innerHTML = '';
+    const span = document.createElement('span');
+    span.className = 'typing-line';
+    line.appendChild(span);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < rightText.length) {
+        const ch = rightText.charAt(i);
+        if (rightText.substr(i).startsWith('Eiffel Tower in Paris')) {
+          const frag = document.createElement('span');
+          frag.className = 'fix';
+          frag.textContent = 'Eiffel Tower in Paris';
+          span.appendChild(frag);
+          i += 'Eiffel Tower in Paris'.length;
+          return;
+        }
+        if (rightText.substr(i).startsWith('dusk')) {
+          const frag = document.createElement('span');
+          frag.className = 'fix';
+          frag.textContent = 'dusk';
+          span.appendChild(frag);
+          i += 'dusk'.length;
+          return;
+        }
+        if (rightText.substr(i).startsWith('blue umbrella')) {
+          const frag = document.createElement('span');
+          frag.className = 'fix';
+          frag.textContent = 'blue umbrella';
+          span.appendChild(frag);
+          i += 'blue umbrella'.length;
+          return;
+        }
+        span.appendChild(document.createTextNode(ch));
+        i++;
+      } else {
+        clearInterval(interval);
+        setTimeout(typeWrong, 2500);
+      }
+    }, 18);
+  }
+  typeWrong();
+})();
+
+/* =============================================================
+   CASE 3 — IPA reveal
+   ============================================================= */
+(function observeIpa() {
+  const container = document.getElementById('ipaAnim');
+  if (!container) return;
+  const lines = container.querySelectorAll('.ipa-line');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        lines.forEach((line, i) => {
+          line.classList.remove('visible');
+          setTimeout(() => line.classList.add('visible'), i * 220);
+        });
+        obs.unobserve(entry.target);
       }
     });
+  }, { threshold: 0.3 });
+  obs.observe(container);
+})();
 
-    // ─── SCROLL-TRIGGERED TEXT SWAP ───
-    const quote1 = document.getElementById('quote1');
-    const quote2 = document.getElementById('quote2');
-    const dataSection = document.querySelector('.data-section');
-    let quote1Active = true;
-
-    function updateQuotes() {
-      if (!dataSection) return;
-      const rect = dataSection.getBoundingClientRect();
-      const sectionHeight = dataSection.offsetHeight;
-      const progress = -rect.top / (sectionHeight - window.innerHeight);
-
-      if (progress > 0.35 && quote1Active) {
-        quote1.classList.remove('visible');
-        quote1.classList.add('hidden');
-        quote2.classList.remove('hidden');
-        quote2.classList.add('visible');
-        quote1Active = false;
-      } else if (progress <= 0.35 && !quote1Active) {
-        quote2.classList.remove('visible');
-        quote2.classList.add('hidden');
-        quote1.classList.remove('hidden');
-        quote1.classList.add('visible');
-        quote1Active = true;
+/* =============================================================
+   CASE 4 — AV reveal
+   ============================================================= */
+(function observeAv() {
+  const container = document.getElementById('avAnim');
+  if (!container) return;
+  const fields = container.querySelectorAll('.av-field');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fields.forEach((field, i) => {
+          field.classList.remove('visible');
+          setTimeout(() => field.classList.add('visible'), i * 180);
+        });
+        obs.unobserve(entry.target);
       }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(container);
+})();
+
+/* =============================================================
+   FOOTER — efeito de círculo que segue o ponteiro
+   (adapta o footer_logo-wrap do site micro1)
+   ============================================================= */
+(function footerPointer() {
+  const footer = document.querySelector('.footer');
+  const fillWrap = document.getElementById('footerFillWrap');
+  if (!footer || !fillWrap) return;
+
+  footer.addEventListener('mouseenter', () => {
+    footer.classList.add('pointer-active');
+  });
+  footer.addEventListener('mouseleave', () => {
+    footer.classList.remove('pointer-active');
+  });
+  footer.addEventListener('mousemove', (e) => {
+    const rect = footer.getBoundingClientRect();
+    // Coordenadas relativas ao canto superior esquerdo do footer
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    // O círculo tem 300x300 e está posicionado em top:-150 left:-200.
+    // Para centralizar o blur exatamente no ponteiro, adicionamos +200/+150.
+    fillWrap.style.setProperty('--pointer-x', (x + 200) + 'px');
+    fillWrap.style.setProperty('--pointer-y', (y + 150) + 'px');
+  });
+})();
+
+/* =============================================================
+   RESIZE — rebuild hero wave
+   ============================================================= */
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const wave = document.getElementById('heroWave');
+    if (!wave) return;
+    wave.innerHTML = '';
+    const count = Math.max(40, Math.floor(window.innerWidth / 22));
+    for (let i = 0; i < count; i++) {
+      const bar = document.createElement('span');
+      const h = 12 + Math.abs(Math.sin(i * 0.45)) * 55 + Math.random() * 25;
+      bar.style.height = h + '%';
+      bar.style.animationDelay = (i * 0.05) + 's';
+      wave.appendChild(bar);
     }
+  }, 200);
+});
+</script>
 
-    window.addEventListener('scroll', updateQuotes, { passive: true });
-    updateQuotes();
-
-    // ─── SCROLL REVEAL ───
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('active'), i * 80);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '-30px' });
-
-    reveals.forEach(el => revealObserver.observe(el));
-
-    // ─── TAXONOMY ANIMATION ───
-    const taxonomyObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const lines = entry.target.querySelectorAll('.taxonomy-line');
-          const nodes = entry.target.querySelectorAll('.taxonomy-node');
-          lines.forEach((line, i) => {
-            setTimeout(() => line.classList.add('animate'), 200 + i * 90);
-          });
-          nodes.forEach((node, i) => {
-            node.style.animationDelay = `${0.15 + i * 0.07}s`;
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-
-    const taxonomyAnim = document.getElementById('taxonomy-animation');
-    if (taxonomyAnim) taxonomyObserver.observe(taxonomyAnim);
-
-    // ─── DATA ENTRY ANIMATION ───
-    const dataentryObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-          entry.target.classList.add('animated');
-          const rows = entry.target.querySelectorAll('.de-row');
-          rows.forEach((row, i) => {
-            setTimeout(() => row.classList.add('visible'), 300 + i * 350);
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-
-    const deAnim = document.getElementById('dataentry-animation');
-    if (deAnim) dataentryObserver.observe(deAnim);
-
-    // ─── CHATBOT ANIMATION ───
-    const chatbotObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-          entry.target.classList.add('animated');
-
-          const messages = [
-            { from: 'user', text: 'How do I reset my password?', delay: 0 },
-            { from: 'bot', text: 'I can help! Which method do you prefer?', delay: 1200 },
-            { from: 'bot-options', text: '📧 Email  |  📱 SMS  |  🔑 Security Key', delay: 2400 },
-            { from: 'user', text: 'Email', delay: 3600 },
-            { from: 'bot', text: 'Done! Check your inbox for the reset link. Avg resolution: 47s ✓', delay: 4800 }
-          ];
-
-          const container = document.getElementById('chat-messages');
-
-          messages.forEach(({ from, text, delay }) => {
-            setTimeout(() => {
-              const div = document.createElement('div');
-              div.className = `chat-message ${from === 'bot-options' ? 'bot' : from}`;
-              const bubble = document.createElement('div');
-              bubble.className = `chat-bubble ${from === 'bot-options' ? 'bot-options' : from}`;
-              bubble.textContent = text;
-              div.appendChild(bubble);
-              container.appendChild(div);
-            }, delay);
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-
-    const chatbotAnim = document.getElementById('chatbot-animation');
-    if (chatbotAnim) chatbotObserver.observe(chatbotAnim);
-
-    // ─── BRIDGE SECTION COUNTER ANIMATION ───
-    const bridgeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.bridge-number').forEach(el => {
-            const target = el.textContent.replace(/[^0-9]/g, '');
-            const suffix = el.textContent.replace(/[0-9]/g, '');
-            if (!target) return;
-            let start = 0;
-            const end = parseInt(target);
-            const duration = 1200;
-            const step = end / (duration / 16);
-            const timer = setInterval(() => {
-              start += step;
-              if (start >= end) {
-                el.textContent = end.toLocaleString() + suffix;
-                clearInterval(timer);
-              } else {
-                el.textContent = Math.floor(start).toLocaleString() + suffix;
-              }
-            }, 16);
-          });
-          bridgeObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const bridgeSect = document.querySelector('.bridge-section');
-    if (bridgeSect) bridgeObserver.observe(bridgeSect);
-  </script>
 </body>
 </html>
