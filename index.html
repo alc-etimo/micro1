@@ -1125,10 +1125,9 @@ body {
 
       <div class="case-anim">
         <div class="speech-container">
-           <audio id="case1-audio" preload="none">
-  <source src="speech-sample.m4a" type="audio/mpeg">
-</audio>
-          <div class="speech-wave" id="speechWave"></div>
+           <div class="speech-wave" id="speechWave"></div>
+         
+          
           <div class="speech-rows">
             <div class="speech-row"><span class="speech-dim">Nativeness</span><span class="speech-score native">3 · Native-like</span></div>
             <div class="speech-row"><span class="speech-dim">Fluency</span><span class="speech-score native">3 · Native-like</span></div>
@@ -1141,6 +1140,9 @@ body {
             <button class="speech-play-btn" onclick="speechPlay(this)" aria-label="Play sample">▶</button>
             <span>Toggle waveform · 5/6 native-like · 1 localized prosody deviation</span>
           </div>
+             <audio id="case1-audio" preload="none" style="display:none">
+  <source src="speech-sample.m4a">
+</audio>
         </div>
       </div>
 
@@ -1429,14 +1431,28 @@ function speechPlay(btn) {
   const playing = wave.classList.toggle('playing');
   btn.textContent = playing ? '❚❚' : '▶';
 
-  if (audio) {
-    if (playing) audio.play().catch(() => {});
-    else audio.pause();
-    audio.onended = () => {
-      wave.classList.remove('playing');
-      btn.textContent = '▶';
-    };
+  if (!audio) {
+    console.warn('[speechPlay] elemento #case1-audio não encontrado');
+    return;
   }
+
+  if (playing) {
+    audio.play().then(() => {
+      console.log('[speechPlay] tocando OK');
+    }).catch((err) => {
+      console.error('[speechPlay] falha ao tocar:', err.name, err.message);
+    });
+  } else {
+    audio.pause();
+  }
+
+  audio.onended = () => {
+    wave.classList.remove('playing');
+    btn.textContent = '▶';
+  };
+  audio.onerror = () => {
+    console.error('[speechPlay] erro no carregamento do áudio', audio.error);
+  };
 }
 
 /* =============================================================
